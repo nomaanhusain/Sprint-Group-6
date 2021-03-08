@@ -23,8 +23,10 @@ public class IDiagnosticTestRepository {
 	public List<DiagnosticTest> getTestsOfDiagnosticCenter(int centerId) {
 		
 	}
+	//This might be wrong, please check!
 	public DiagnosticTest updateTestDetail(DiagnosticTest test) {
-		
+		DiagnosticTest dig=digTestDao.save(test);
+		return dig;
 	}
 	public DiagnosticTest removeTestFromDiagnosticCenter(int centerId, DiagnosticTest test) {
 		
