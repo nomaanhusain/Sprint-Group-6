@@ -24,8 +24,7 @@ public class Patient {
 	private int age;
 	private String gender;
 	Set<Appointment> appointment;
-	
-	
+		
 	
 	public int getPatientId() {
 		return patientId;

@@ -20,6 +20,7 @@ public class IAppointmentRepository {
 	
 	public Set<Appointment> viewAppointments(String patientName) {
 		
+		return null;
 	}
 	
 	public Appointment viewAppointment(int appointmentId) {
@@ -36,12 +37,18 @@ public class IAppointmentRepository {
 		return appointment;	
 	}
 	
-	public Appointment updateAppointment(Appointment appointment) {
+	public Appointment updateAppointment(Appointment app) {
 		Appointment appointment1 = appointment.save(app);
-		return appointment1;		
+		return appointment1;
 	}
 	
-	public List<Appointment> getAppointmentList(int centreId, String test, int status) {}
+	public List<Appointment> getAppointmentList(int centreId, String test, int status) {
+		
+		return null;
+	}
 	
-	public Appointment removeAppointment(Appointment appointment) {}
+	public Appointment removeAppointment(Appointment appointment) {
+		
+		return appointment;
+	}
 }
