@@ -1,5 +1,5 @@
 package com.healthCare.model;
 
-public class DiagonosticCenter {
+public class DiagnosticCenter {
 
 }
