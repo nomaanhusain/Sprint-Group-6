@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class DignosticTest {
+public class DiagnosticTest {
 	@Id
 	@GeneratedValue
 	private int id;
