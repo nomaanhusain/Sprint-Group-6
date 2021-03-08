@@ -13,12 +13,14 @@ public class IDiagnosticTestRepository {
 	private DiagnosticTestDAO digTestDao;
 
 	public List<DiagnosticTest> getAllTest() {
-
+		List<DiagnosticTest> ls=digTestDao.findAll();
+		return ls;
 	}
 	public DiagnosticTest addNewTest(DiagnosticTest test) {
-		
+		DiagnosticTest dig= digTestDao.save(test);
+		return dig;
 	}
-	public List<DiagnosticTest> getTestsOfDiagnosticCenter() {
+	public List<DiagnosticTest> getTestsOfDiagnosticCenter(int centerId) {
 		
 	}
 	public DiagnosticTest updateTestDetail(DiagnosticTest test) {
