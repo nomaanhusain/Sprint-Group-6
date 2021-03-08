@@ -20,6 +20,9 @@ public class User {
 	public String password;;
 	public String role;
 	
+	public User() {
+		
+	}
 	public User(int id, String username,String password, String role){
 		this.id=id;
 		this.password=password;
