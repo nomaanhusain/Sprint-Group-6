@@ -1,6 +1,8 @@
 package com.healthCare.model;
 
 import java.util.Date;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,10 +33,10 @@ public class Appointment {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public LocalDate getAppointmentDate() {
+	public Date getAppointmentDate() {
 		return appointmentDate;
 	}
-	public void setAppointmentDate(LocalDate appointmentDate) {
+	public void setAppointmentDate(Date appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
 	public ApprovalStatus getApprovalStatus() {
@@ -67,7 +69,4 @@ public class Appointment {
 	public void setTestResult(Set<TestResult> testResult) {
 		this.testResult = testResult;
 	}
-
-	
-	
-}
+s}
