@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.healthCare.dao.PatientDAO;
 import com.healthCare.model.Patient;
+import com.healthCare.model.TestResult;
 
 @Service
 public class IPatientServiceImpl implements IPatientService {

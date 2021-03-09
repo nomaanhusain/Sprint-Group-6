@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.healthCare.model.Patient;
+import com.healthCare.model.TestResult;
 
 @Repository
 public class IPatientRepository {

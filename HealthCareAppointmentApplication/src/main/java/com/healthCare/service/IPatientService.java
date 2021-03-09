@@ -3,6 +3,7 @@ package com.healthCare.service;
 import java.util.List;
 
 import com.healthCare.model.Patient;
+import com.healthCare.model.TestResult;
 
 public interface IPatientService {
 
