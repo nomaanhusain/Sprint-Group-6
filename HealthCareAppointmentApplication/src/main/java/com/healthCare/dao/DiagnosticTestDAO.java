@@ -10,5 +10,5 @@ import com.healthCare.model.DiagnosticTest;
 
 
 public interface DiagnosticTestDAO extends JpaRepository<DiagnosticTest, Integer> {
-	
+	public List<DiagnosticTest> findByCenterId(int centerId);
 }

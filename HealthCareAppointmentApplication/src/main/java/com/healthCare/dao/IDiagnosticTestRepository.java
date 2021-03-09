@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 import com.healthCare.model.DiagnosticTest;
 
 @Repository
-public interface IDiagnosticTestRepository {
+public class IDiagnosticTestRepository {
 	@Autowired
-	private IDiagnosticTestRepository digTestDao;
+	private DiagnosticTestDAO digTestDao;
 
 	public List<DiagnosticTest> getAllTest() {
 		List<DiagnosticTest> ls = digTestDao.findAll();
