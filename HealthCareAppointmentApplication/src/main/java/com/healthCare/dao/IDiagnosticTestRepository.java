@@ -8,13 +8,33 @@ import org.springframework.stereotype.Repository;
 
 import com.healthCare.model.DiagnosticTest;
 
+@Repository
+public interface IDiagnosticTestRepository {
+	@Autowired
+	private IDiagnosticTestRepository digTestDao;
 
-public interface IDiagnosticTestRepository extends JpaRepository<DiagnosticTest, Integer>{
-	public List<DiagnosticTest> findByCenterId(int centerId);
-	public DiagnosticTest deleteByCenterId(int centerId);
-	public List<DiagnosticTest> getAllTest();
-	public DiagnosticTest addNewTest(DiagnosticTest test);
-	public List<DiagnosticTest> getTestsOfDiagnosticCenter(int centerId);
-	public DiagnosticTest updateTestDetail(DiagnosticTest test);
-	public DiagnosticTest removeTestFromDiagnosticCenter(int centerId, DiagnosticTest test);
+	public List<DiagnosticTest> getAllTest() {
+		List<DiagnosticTest> ls = digTestDao.findAll();
+		return ls;
+	}
+
+	public DiagnosticTest addNewTest(DiagnosticTest test) {
+		DiagnosticTest dig = digTestDao.save(test);
+		return dig;
+	}
+
+	public List<DiagnosticTest> getTestsOfDiagnosticCenter(int centerId) {
+		List<DiagnosticTest> list = digTestDao.findByCenterId(centerId);
+		return list;
+	}
+
+	// This might be wrong, please check!
+	public DiagnosticTest updateTestDetail(DiagnosticTest test) {
+		DiagnosticTest dig = digTestDao.save(test);
+		return dig;
+	}
+
+	public DiagnosticTest removeTestFromDiagnosticCenter(int centerId, DiagnosticTest test) {
+		return null;
+	}
 }
