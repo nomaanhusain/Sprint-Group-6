@@ -39,9 +39,6 @@ public class Appointment {
 	public void setAppointmentDate(Date appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
-	public boolean isApprovalStatus() {
-		return approvalStatus;
-	}
 	public void setApprovalStatus(boolean approvalStatus) {
 		this.approvalStatus = approvalStatus;
 	}
@@ -68,5 +65,9 @@ public class Appointment {
 	}
 	public void setTestResult(Set<TestResult> testResult) {
 		this.testResult = testResult;
+	}
+	public boolean getApprovalStatus() {
+		// TODO Auto-generated method stub
+		return approvalStatus;
 	}
 }
