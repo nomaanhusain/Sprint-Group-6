@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.healthCare.model.DiagnosticTest;
 
-
+@Repository
 public interface IDiagnosticTestRepository extends JpaRepository<DiagnosticTest, Integer>{
 	public List<DiagnosticTest> findByCenterId(int centerId);
 	public DiagnosticTest deleteByCenterId(int centerId);

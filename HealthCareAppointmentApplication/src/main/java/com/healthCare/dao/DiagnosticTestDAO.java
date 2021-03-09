@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.healthCare.model.DiagnosticTest;
 
-@Repository
+
 public class DiagnosticTestDAO  {
 	@Autowired
 	private IDiagnosticTestRepository digTestDao;
