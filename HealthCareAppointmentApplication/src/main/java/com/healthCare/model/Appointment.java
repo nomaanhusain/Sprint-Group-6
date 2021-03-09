@@ -20,7 +20,7 @@ public class Appointment {
 	@GeneratedValue
 	private int id;
 	private Date appointmentDate;
-//	private  approvalStatus;
+	private  approvalStatus;
 	private Set<DiagnosticTest> diagnosticTests;
 	private Patient patient;
 	private DiagnosticCenter diagnosticCenter;
@@ -69,4 +69,4 @@ public class Appointment {
 	public void setTestResult(Set<TestResult> testResult) {
 		this.testResult = testResult;
 	}
-s}
+}
