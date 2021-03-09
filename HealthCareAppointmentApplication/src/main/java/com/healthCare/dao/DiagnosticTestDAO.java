@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.healthCare.model.DiagnosticTest;
 
-
+@Repository
 public class DiagnosticTestDAO  {
 	@Autowired
 	private IDiagnosticTestRepository digTestDao;
@@ -34,6 +34,6 @@ public class DiagnosticTestDAO  {
 	}
 
 	public DiagnosticTest removeTestFromDiagnosticCenter(int centerId, DiagnosticTest test) {
-		
+		return null;
 	}
 }
