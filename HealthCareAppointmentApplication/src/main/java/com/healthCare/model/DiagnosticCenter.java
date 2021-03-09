@@ -11,5 +11,5 @@ import lombok.Data;
 public class DiagnosticCenter {
 	@Id
 	@GeneratedValue
-	private int centerId;
+	private int centerId;//primary key
 }
