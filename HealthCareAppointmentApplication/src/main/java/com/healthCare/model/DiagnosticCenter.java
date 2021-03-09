@@ -1,5 +1,15 @@
 package com.healthCare.model;
 
-public class DiagnosticCenter {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+import lombok.Data;
+
+@Entity
+@Data
+public class DiagnosticCenter {
+	@Id
+	@GeneratedValue
+	private int centerId;
 }
