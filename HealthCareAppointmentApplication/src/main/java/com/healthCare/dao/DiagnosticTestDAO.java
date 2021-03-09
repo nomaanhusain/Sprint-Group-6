@@ -10,7 +10,7 @@ import com.healthCare.model.DiagnosticTest;
 @Repository
 public class DiagnosticTestDAO  {
 	@Autowired
-	private DiagnosticTestDAO digTestDao;
+	private IDiagnosticTestRepository digTestDao;
 
 	public List<DiagnosticTest> getAllTest() {
 		List<DiagnosticTest> ls=digTestDao.findAll();
