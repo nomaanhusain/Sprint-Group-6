@@ -20,7 +20,7 @@ public class Appointment {
 	@GeneratedValue
 	private int id;
 	private Date appointmentDate;
-	private ApprovalStatus approvalStatus;
+//	private  approvalStatus;
 	private Set<DiagnosticTest> diagnosticTests;
 	private Patient patient;
 	private DiagnosticCenter diagnosticCenter;

@@ -1,5 +1,5 @@
 package com.healthCare.service;
 
-public class IAppointmentServiceImpl {
+public class IAppointmentServiceImpl implements IAppointmentService {
 
 }
