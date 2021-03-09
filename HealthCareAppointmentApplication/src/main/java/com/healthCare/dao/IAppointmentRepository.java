@@ -12,6 +12,8 @@ public class IAppointmentRepository {
 	
 	@Autowired
 	private AppointmentDAO appointment;
+	@Autowired
+	private PatientDAO patient;
 	
 	public Appointment addAppointment(Appointment app) {
 		Appointment appointment1 = appointment.save(app);
