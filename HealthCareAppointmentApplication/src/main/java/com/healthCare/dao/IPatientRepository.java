@@ -15,31 +15,30 @@ public class IPatientRepository {
 
 	@Autowired
 	private PatientDAO patient;
+	@Autowired
+	private TestResultDAO testResult;
 	
-	public Patient registerPatient(Patient patient) {
-		
-		return null;
+	public Patient registerPatient(Patient patient1) {
+		return patient.save(patient1);
 	}
 
-	public Patient updatePatient(Patient patient) {
-		// TODO Auto-generated method stub
-		return null;
+	public Patient updatePatient(Patient patient1) {
+		return patient.save(patient1);
 	}
 
 	public Patient viewPatient(String patientUserName) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Patient> optional = patient.findByName(patientUserName);
+		return optional.orElseThrow(()->new PatientNotFoundException("Patient Not Exists"));
 	}
-
+	
+	//not complete
 	public List<TestResult> getAllTestResult(String patientUserName) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	public TestResult viewTestResult(int testResultId) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<TestResult> optional = testResult.findById(testResultId);
+		return optional.get();
 	}
 	
 	public Patient getPatientById(Integer pid) {

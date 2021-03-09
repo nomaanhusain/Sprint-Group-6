@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.healthCare.exception.ApointmentNotFoundException;
 import com.healthCare.model.Appointment;
 import com.healthCare.model.Patient;
@@ -15,7 +14,6 @@ public class IAppointmentRepository {
 	
 	@Autowired
 	private AppointmentDAO appointment;
-	
 	@Autowired
 	private PatientDAO patient;
 	
@@ -41,7 +39,7 @@ public class IAppointmentRepository {
 		return appointment1;
 	}
 		
-	
+	//not complete
 	public List<Appointment> getAppointmentList(int centreId, String test, int status) {
 		
 		return null;
