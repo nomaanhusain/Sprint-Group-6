@@ -9,7 +9,6 @@ import com.healthCare.model.*;
 
 public interface PatientDAO extends JpaRepository<Patient, Integer>
 {
-
 	Optional<Patient> findByName(String patientName);
-
+	
 }

@@ -39,10 +39,10 @@ public class Appointment {
 	public void setAppointmentDate(Date appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
-	public ApprovalStatus getApprovalStatus() {
+	public boolean isApprovalStatus() {
 		return approvalStatus;
 	}
-	public void setApprovalStatus(ApprovalStatus approvalStatus) {
+	public void setApprovalStatus(boolean approvalStatus) {
 		this.approvalStatus = approvalStatus;
 	}
 	public Set<DiagnosticTest> getDiagnosticTests() {
