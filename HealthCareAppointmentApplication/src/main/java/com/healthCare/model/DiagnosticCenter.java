@@ -2,13 +2,14 @@ package com.healthCare.model;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,10 @@ import lombok.NoArgsConstructor;
 		private String contactEmail;
 		 @ElementCollection(targetClass=String.class)
 		private List<String> servicesOffered;
+		 @ManyToMany(cascade = CascadeType.ALL)
+			@JoinColumn(name="center_id",referencedColumnName="centerId")
 	    private Set<DiagnosticTest> tests;
+	    
 		public int getCenterId() {
 			return centerId;
 		}
@@ -73,7 +77,4 @@ import lombok.NoArgsConstructor;
 		public void setTests(Set<DiagnosticTest> tests) {
 			this.tests = tests;
 		}
-	    
-	    
-
 }

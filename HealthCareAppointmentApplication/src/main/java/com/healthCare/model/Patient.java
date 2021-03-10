@@ -4,8 +4,10 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,44 +29,10 @@ public class Patient {
 	private String phoneNo;
 	private int age;
 	private String gender;
-	@OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)
-	Set<Appointment> appointment;
-		
 	
-	public int getPatientId() {
-		return patientId;
-	}
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPhoneNo() {
-		return phoneNo;
-	}
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public Set<Appointment> getAppointment() {
-		return appointment;
-	}
-	public void setAppointment(Set<Appointment> appointment) {
-		this.appointment = appointment;
-	}
+	
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = Appointment.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
+	private Set<Appointment> appointment;
+	
 }
