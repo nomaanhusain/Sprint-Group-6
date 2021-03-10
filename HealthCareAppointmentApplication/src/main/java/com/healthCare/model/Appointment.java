@@ -3,9 +3,16 @@ package com.healthCare.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "appointments")
 public class Appointment {
 	
 	@Id
@@ -21,9 +29,19 @@ public class Appointment {
 	private int id;
 	private Date appointmentDate;
 	private boolean approvalStatus;
+	
+	@OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<DiagnosticTest> diagnosticTests;
+		
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "patientId")
 	private Patient patient;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "diagnosticCenter_id")
 	private DiagnosticCenter diagnosticCenter;
+	
+	@OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<TestResult> testResult;
 	
 	

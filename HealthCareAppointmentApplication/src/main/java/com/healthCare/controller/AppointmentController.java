@@ -70,5 +70,4 @@ public class AppointmentController {
 		aservice.removeAppointment(appo);
 		return new ResponseEntity<String>("Appointment With ID :" + appo.getId() + " Deleted Successfully", HttpStatus.OK);
 	}
-	
 }
