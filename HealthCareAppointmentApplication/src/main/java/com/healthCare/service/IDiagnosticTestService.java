@@ -15,3 +15,7 @@ public interface IDiagnosticTestService {
 
 	public DiagnosticTest removeTestFromDiagnosticCenter(int centerId, DiagnosticTest test);
 }
+
+
+
+

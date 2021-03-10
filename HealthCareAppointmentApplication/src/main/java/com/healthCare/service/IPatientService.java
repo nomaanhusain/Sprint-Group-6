@@ -17,5 +17,4 @@ public interface IPatientService {
 	
 	TestResult viewTestResult(int testResultId);
 	
-	
 }

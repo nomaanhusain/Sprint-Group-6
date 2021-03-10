@@ -28,8 +28,8 @@ public class ITestResultServiceImpl implements ITestResultService {
 	}
 
 	@Override
-	public TestResult removeTestResult(int id) {
-		TestResult tr=testRep.removeTestResult(id);
+	public TestResult removeTestResult(int testId) {
+		TestResult tr=testRep.removeTestResult(testId);
 		return tr;
 	}
 
