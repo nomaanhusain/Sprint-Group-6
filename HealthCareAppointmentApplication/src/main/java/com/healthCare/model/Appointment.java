@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,7 +29,7 @@ public class Appointment {
 	private Date appointmentDate;
 	private boolean approvalStatus;
 	
-	@OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "appointments",cascade = CascadeType.ALL)
 	private Set<DiagnosticTest> diagnosticTests;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -41,10 +40,9 @@ public class Appointment {
 	@JoinColumn(name = "centerId")
 	private DiagnosticCenter diagnosticCenter;
 	
-	@OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "appointments",cascade = CascadeType.ALL)
 	private Set<TestResult> testResult;
-	
-	
+
 	public int getAppointmentId() {
 		return appointmentId;
 	}
@@ -85,7 +83,6 @@ public class Appointment {
 		this.testResult = testResult;
 	}
 	public boolean getApprovalStatus() {
-		// TODO Auto-generated method stub
 		return approvalStatus;
 	}
 }

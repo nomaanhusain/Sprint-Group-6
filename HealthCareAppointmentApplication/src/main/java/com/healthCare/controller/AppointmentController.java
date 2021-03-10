@@ -31,7 +31,7 @@ public class AppointmentController {
 	@PostMapping(value = "/addAppointment")
 	public ResponseEntity<String> addAppointment(@RequestBody Appointment appo) {
 		Appointment appo1= aservice.addAppointment(appo);
-		return new ResponseEntity<String>("Appointment with ID :" + appo1.getId()+ " created Successfully", HttpStatus.CREATED);
+		return new ResponseEntity<String>("Appointment with ID :" + appo1.getAppointmentId()+ " created Successfully", HttpStatus.CREATED);
 	}
 	
 	@GetMapping(value="/viewAppointments/{patientName}")
@@ -68,6 +68,6 @@ public class AppointmentController {
 	public ResponseEntity<String> removeAppointment(@RequestBody Appointment appo)
 	{
 		aservice.removeAppointment(appo);
-		return new ResponseEntity<String>("Appointment With ID :" + appo.getId() + " Deleted Successfully", HttpStatus.OK);
+		return new ResponseEntity<String>("Appointment With ID :" + appo.getAppointmentId() + " Deleted Successfully", HttpStatus.OK);
 	}
 }

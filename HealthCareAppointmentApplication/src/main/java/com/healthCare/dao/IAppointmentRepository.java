@@ -24,8 +24,8 @@ public class IAppointmentRepository {
 	
 	//I don't have idea how to implement
 	public Set<Appointment> viewAppointments(String patientName) {
-		Optional<Patient> optional = patient.findByName(patientName);
-		return optional.get().getAppointment();
+		Patient optional = patient.findByName(patientName);
+		return optional.getAppointment();
 	}
 	
 	public Appointment viewAppointment(int appointmentId) {
