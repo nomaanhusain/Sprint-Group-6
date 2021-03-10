@@ -18,7 +18,7 @@ public class TestResult {
 	private double testReading;
 	private String condition;
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="appointmentId",referencedColumnName = "testResultId")
+	@JoinColumn(name="testResult_id", referencedColumnName = "testResultId")
 	private Appointment appointment;
 	
 	

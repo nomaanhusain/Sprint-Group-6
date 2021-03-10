@@ -5,12 +5,15 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,63 +29,26 @@ public class Appointment {
 	@Id
 	@GeneratedValue
 	private int appointmentId;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date appointmentDate;
+	
 	private boolean approvalStatus;
 	
-	@OneToMany(mappedBy = "appointments",cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = DiagnosticTest.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "appointment_id", referencedColumnName = "appointmentId")
 	private Set<DiagnosticTest> diagnosticTests;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "patientId",referencedColumnName = "appointmentId")
+	@JoinColumn(name = "patient_id",referencedColumnName="patientId")
 	private Patient patient;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "centerId",referencedColumnName = "appointmentId")
+	@JoinColumn(name = "center_id", referencedColumnName="centerId")
 	private DiagnosticCenter diagnosticCenter;
 	
-	@OneToMany(mappedBy = "appointments",cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = TestResult.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "appointment_no", referencedColumnName = "appointmentId")
 	private Set<TestResult> testResult;
 
-	public int getAppointmentId() {
-		return appointmentId;
-	}
-	public void setAppointmentId(int appointmentId) {
-		this.appointmentId = appointmentId;
-	}
-	public Date getAppointmentDate() {
-		return appointmentDate;
-	}
-	public void setAppointmentDate(Date appointmentDate) {
-		this.appointmentDate = appointmentDate;
-	}
-	public void setApprovalStatus(boolean approvalStatus) {
-		this.approvalStatus = approvalStatus;
-	}
-	public Set<DiagnosticTest> getDiagnosticTests() {
-		return diagnosticTests;
-	}
-	public void setDiagnosticTests(Set<DiagnosticTest> diagnosticTests) {
-		this.diagnosticTests = diagnosticTests;
-	}
-	public Patient getPatient() {
-		return patient;
-	}
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-	public DiagnosticCenter getDiagnosticCenter() {
-		return diagnosticCenter;
-	}
-	public void setDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
-		this.diagnosticCenter = diagnosticCenter;
-	}
-	public Set<TestResult> getTestResult() {
-		return testResult;
-	}
-	public void setTestResult(Set<TestResult> testResult) {
-		this.testResult = testResult;
-	}
-	public boolean getApprovalStatus() {
-		return approvalStatus;
-	}
 }
