@@ -29,13 +29,9 @@ public class DiagnosticTest {
 	private String normalValue;
 	private String units;
 
-	@ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "tests")
-
-	@JoinColumn(name="testCenter_id",referencedColumnName="centerId")
-
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="Center_id",referencedColumnName="centerId")
 	private Set<DiagnosticCenter> diagnosticCenter;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="appointment_Id",referencedColumnName="appointmentId")
-	private Appointment appointment;
+	
 	
 }

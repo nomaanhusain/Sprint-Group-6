@@ -36,8 +36,8 @@ import lombok.NoArgsConstructor;
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY) //primary key generation automatically according to database.
-		@Column(name = "Center_id")
-		private int id;
+
+		private int centerId;
 
 		private String name;
 		private String contactNo;
@@ -46,9 +46,8 @@ import lombok.NoArgsConstructor;
 		 @ElementCollection(targetClass=String.class)
 		private List<String> servicesOffered;
 
-		 @ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-		 @JoinTable(name="test_offered",
-		 joinColumns = {@JoinColumn(name="center_id")},inverseJoinColumns = {@JoinColumn(name="test_id")})
+		 @ManyToMany(cascade=CascadeType.ALL)
+		 @JoinColumn(name="test_offered",referencedColumnName="testId")
 	    private Set<DiagnosticTest> tests=new HashSet<>();
 
 ;
