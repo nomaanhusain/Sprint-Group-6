@@ -33,11 +33,11 @@ public class Appointment {
 	private Set<DiagnosticTest> diagnosticTests;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "patientId")
+	@JoinColumn(name = "patientId",referencedColumnName = "appointmentId")
 	private Patient patient;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "centerId")
+	@JoinColumn(name = "centerId",referencedColumnName = "appointmentId")
 	private DiagnosticCenter diagnosticCenter;
 	
 	@OneToMany(mappedBy = "appointments",cascade = CascadeType.ALL)

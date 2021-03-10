@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -28,7 +27,7 @@ public class Patient {
 	private String phoneNo;
 	private int age;
 	private String gender;
-	@OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)
 	Set<Appointment> appointment;
 		
 	
