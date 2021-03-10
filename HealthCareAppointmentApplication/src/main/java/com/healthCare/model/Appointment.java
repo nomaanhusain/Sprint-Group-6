@@ -24,49 +24,49 @@ public class Appointment {
 	private Set<DiagnosticTest> diagnosticTests;
 	private Patient patient;
 	private DiagnosticCenter diagnosticCenter;
-	private Set<TestResult> testResult;
+//	private Set<TestResult> testResult;
 	
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public Date getAppointmentDate() {
-		return appointmentDate;
-	}
-	public void setAppointmentDate(Date appointmentDate) {
-		this.appointmentDate = appointmentDate;
-	}
-	public boolean isApprovalStatus() {
-		return approvalStatus;
-	}
-	public void setApprovalStatus(boolean approvalStatus) {
-		this.approvalStatus = approvalStatus;
-	}
-	public Set<DiagnosticTest> getDiagnosticTests() {
-		return diagnosticTests;
-	}
-	public void setDiagnosticTests(Set<DiagnosticTest> diagnosticTests) {
-		this.diagnosticTests = diagnosticTests;
-	}
-	public Patient getPatient() {
-		return patient;
-	}
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-	public DiagnosticCenter getDiagnosticCenter() {
-		return diagnosticCenter;
-	}
-	public void setDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
-		this.diagnosticCenter = diagnosticCenter;
-	}
-	public Set<TestResult> getTestResult() {
-		return testResult;
-	}
-	public void setTestResult(Set<TestResult> testResult) {
-		this.testResult = testResult;
-	}
+//	public int getId() {
+//		return id;
+//	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
+//	public Date getAppointmentDate() {
+//		return appointmentDate;
+//	}
+//	public void setAppointmentDate(Date appointmentDate) {
+//		this.appointmentDate = appointmentDate;
+//	}
+//	public boolean isApprovalStatus() {
+//		return approvalStatus;
+//	}
+//	public void setApprovalStatus(boolean approvalStatus) {
+//		this.approvalStatus = approvalStatus;
+//	}
+//	public Set<DiagnosticTest> getDiagnosticTests() {
+//		return diagnosticTests;
+//	}
+//	public void setDiagnosticTests(Set<DiagnosticTest> diagnosticTests) {
+//		this.diagnosticTests = diagnosticTests;
+//	}
+//	public Patient getPatient() {
+//		return patient;
+//	}
+//	public void setPatient(Patient patient) {
+//		this.patient = patient;
+//	}
+//	public DiagnosticCenter getDiagnosticCenter() {
+//		return diagnosticCenter;
+//	}
+//	public void setDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
+//		this.diagnosticCenter = diagnosticCenter;
+//	}
+//	public Set<TestResult> getTestResult() {
+//		return testResult;
+//	}
+//	public void setTestResult(Set<TestResult> testResult) {
+//		this.testResult = testResult;
+//	}
 }

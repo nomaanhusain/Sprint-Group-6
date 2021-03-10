@@ -51,10 +51,12 @@ public class DiagnosticCenterImpl implements IDiagnosticCenter {
 	@Override
 	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
 		// TODO Auto-generated method stub
+		//Optional<DiagnosticTest> optional=centerDao.
 		return null;
 	}
 
 	@Override
+	//to add test
 	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
 		// TODO Auto-generated method stub
 	
@@ -79,7 +81,9 @@ public class DiagnosticCenterImpl implements IDiagnosticCenter {
 	@Override
 	public List<Appointment> getListOfAppointments(String centerName) {
 		// TODO Auto-generated method stub
-		return null;
+		return centerDao.findAllCenter(centerName);
+		
+		
 	}
 
 }

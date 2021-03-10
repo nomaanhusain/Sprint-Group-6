@@ -1,14 +1,20 @@
 package com.healthCare.model;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,13 +25,15 @@ import lombok.NoArgsConstructor;
 	@Data
 	@AllArgsConstructor
 	@NoArgsConstructor
+	@Table(name="Diagnostic_Centers")
 	public class DiagnosticCenter {
 		
 	
 		
 		
 		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO) //primary key generation automatically according to database.
+		@GeneratedValue(strategy = GenerationType.IDENTITY) //primary key generation automatically according to database.
+		@Column(name = "Center_id")
 		private int id;
 		private String name;
 		private String contactNo;
@@ -33,6 +41,9 @@ import lombok.NoArgsConstructor;
 		private String contactEmail;
 		 @ElementCollection(targetClass=String.class)
 		private List<String> servicesOffered;
-	    private Set<DiagnosticTest> tests;
+		 @ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+		 @JoinTable(name="test_offered",
+		 joinColumns = {@JoinColumn(name="center_id")},inverseJoinColumns = {@JoinColumn(name="test_id")})
+	    private Set<DiagnosticTest> tests=new HashSet<>();
 
 }
