@@ -32,13 +32,13 @@ public class Appointment {
 	
 	@OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<DiagnosticTest> diagnosticTests;
-		
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "patientId")
 	private Patient patient;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "diagnosticCenter_id")
+	@JoinColumn(name = "id")
 	private DiagnosticCenter diagnosticCenter;
 	
 	@OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)

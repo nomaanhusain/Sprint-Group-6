@@ -2,9 +2,13 @@ package com.healthCare.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name="patient")
 public class Patient {
 
 	@Id
@@ -23,6 +28,7 @@ public class Patient {
 	private String phoneNo;
 	private int age;
 	private String gender;
+	@OneToMany(mappedBy = "patient", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	Set<Appointment> appointment;
 		
 	
