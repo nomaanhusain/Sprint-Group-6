@@ -14,7 +14,7 @@ public interface IDiagnosticCenter {
 	public DiagnosticTest viewTestDetails(int diagnosticCenterId,String testName);
 	public DiagnosticTest addTest(int diagnosticcenterId,int testId);
 	public DiagnosticCenter getDiagnosticCenter(String centername);
-	public void removeDiagnosticCenter(int id);
+	public DiagnosticCenter removeDiagnosticCenter(int id);
 	public List<Appointment>getListOfAppointments(String centerName);
 	
 }

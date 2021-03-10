@@ -1,4 +1,6 @@
 package com.healthCare.service;
+
+
 import java.util.List;
 import java.util.Optional;
 
@@ -14,74 +16,75 @@ import com.healthCare.model.DiagnosticCenter;
 import com.healthCare.model.DiagnosticTest;
 
 @Service
-public class DiagnosticCenterImpl implements IDiagnosticCenter {
+public class IDiagnosticCenterServiceImpl implements IDiagnosticCenter {
 	
 	@Autowired
 	private IDiagnosticCenterRepository centerDao;
-	public DiagnosticCenterImpl() {
+	public IDiagnosticCenterServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public List<DiagnosticCenter> getAllDiagnosticCenters() {
-		return centerDao.findAll();
+		List<DiagnosticCenter> centerList=centerDao.getAllDiagnosticCenter();
+		return centerList;
 	}
 
 	@Override
 	public DiagnosticCenter addDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
-        centerDao.save(diagnosticCenter);
-		return diagnosticCenter;
+        DiagnosticCenter  addCenter= centerDao.addDiagnosticCenter(diagnosticCenter);
+		return addCenter;
 	}
 
 	@Override
 	public DiagnosticCenter getDiagnosticCenterById(int diagnosticCenterId) {
-		Optional<DiagnosticCenter> optional=centerDao.findById(diagnosticCenterId);
-		DiagnosticCenter diag=optional.orElseThrow(()->new CenterNotFoundException("Center Not Exists"));
+	    DiagnosticCenter diag=centerDao.getDiagnosticCenterById(diagnosticCenterId);
+		
 		return diag;
 	}
 
 	
 	@Override
 	public DiagnosticCenter updateDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
-		centerDao.save(diagnosticCenter);
+		DiagnosticCenter updateCenter=centerDao.updateDiagnosticCenter(diagnosticCenter);
 
-		return diagnosticCenter;
+		return updateCenter;
 	}
 
 	@Override
 	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
 		// TODO Auto-generated method stub
-		//Optional<DiagnosticTest> optional=centerDao.
-		return null;
+		DiagnosticTest view_test=centerDao.viewTestDetails(diagnosticCenterId,testName);
+		return view_test;
 	}
 
 	@Override
 	//to add diagnostic test
 	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
-		// TODO Auto-generated method stub
+		DiagnosticTest diag_test = centerDao.addTest(diagnosticcenterId,testId);
+		return diag_test;
 	
-		return null;
 	}
 
 	@Override
 	public DiagnosticCenter getDiagnosticCenter(String centername) {
-		Optional<DiagnosticCenter> optional=centerDao.findByName(centername);
-		DiagnosticCenter centerName=optional.orElseThrow(()->new CenterNotFoundException("Center Not Exists"));
+		
+		DiagnosticCenter centerName=centerDao.getDiagnosticCenter(centername);
 		return centerName;
 		
 	}
 
 	@Override
-	public void removeDiagnosticCenter(int id) {
-	   DiagnosticCenter centerId= centerDao.findById(id).get();
-	   centerDao.delete(centerId);
+	public DiagnosticCenter removeDiagnosticCenter(int id) {
+	   DiagnosticCenter centerId= centerDao.removeDiagnosticCenter(id);
+	 return centerId;
 
 	}
 
 	@Override
 	public List<Appointment> getListOfAppointments(String centerName) {
-		// TODO Auto-generated method stub
-		return centerDao.findAllCenter(centerName);
+		
+		return centerDao.getListOfAppointments(centerName);
 		
 		
 	}
