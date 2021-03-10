@@ -14,11 +14,12 @@ import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToOne;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Entity
+@AllArgsConstructor
 public class DiagnosticTest {
 	@Id
 	@GeneratedValue
