@@ -35,6 +35,7 @@ public class IDiagnosticTestRepository {
 	}
 
 	public DiagnosticTest removeTestFromDiagnosticCenter(int centerId, DiagnosticTest test) {
-		return null;
+		DiagnosticTest dig=digTestDao.deleteByCenterId(centerId, test);
+		return dig;
 	}
 }
