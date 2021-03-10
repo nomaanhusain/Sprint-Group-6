@@ -24,4 +24,42 @@ public class DiagnosticTest {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="centerId",referencedColumnName = "testId")
 	private Set<DiagnosticCenter> diagnosticCenter;
+	
+	
+	public int getTestId() {
+		return testId;
+	}
+	public void setTestId(int testId) {
+		this.testId = testId;
+	}
+	public String getTestName() {
+		return testName;
+	}
+	public void setTestName(String testName) {
+		this.testName = testName;
+	}
+	public double getTestPrice() {
+		return testPrice;
+	}
+	public void setTestPrice(double testPrice) {
+		this.testPrice = testPrice;
+	}
+	public String getNormalValue() {
+		return normalValue;
+	}
+	public void setNormalValue(String normalValue) {
+		this.normalValue = normalValue;
+	}
+	public String getUnits() {
+		return units;
+	}
+	public void setUnits(String units) {
+		this.units = units;
+	}
+	public Set<DiagnosticCenter> getDiagnosticCenter() {
+		return diagnosticCenter;
+	}
+	public void setDiagnosticCenter(Set<DiagnosticCenter> diagnosticCenter) {
+		this.diagnosticCenter = diagnosticCenter;
+	}
 }
