@@ -46,57 +46,10 @@ public class Appointment {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "center_id", referencedColumnName="centerId")
 	private DiagnosticCenter diagnosticCenter;
-<<<<<<< HEAD
-//	private Set<TestResult> testResult;
-	
-	
-//	public int getId() {
-//		return id;
-//	}
-//	public void setId(int id) {
-//		this.id = id;
-//	}
-//	public Date getAppointmentDate() {
-//		return appointmentDate;
-//	}
-//	public void setAppointmentDate(Date appointmentDate) {
-//		this.appointmentDate = appointmentDate;
-//	}
-//	public boolean isApprovalStatus() {
-//		return approvalStatus;
-//	}
-//	public void setApprovalStatus(boolean approvalStatus) {
-//		this.approvalStatus = approvalStatus;
-//	}
-//	public Set<DiagnosticTest> getDiagnosticTests() {
-//		return diagnosticTests;
-//	}
-//	public void setDiagnosticTests(Set<DiagnosticTest> diagnosticTests) {
-//		this.diagnosticTests = diagnosticTests;
-//	}
-//	public Patient getPatient() {
-//		return patient;
-//	}
-//	public void setPatient(Patient patient) {
-//		this.patient = patient;
-//	}
-//	public DiagnosticCenter getDiagnosticCenter() {
-//		return diagnosticCenter;
-//	}
-//	public void setDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
-//		this.diagnosticCenter = diagnosticCenter;
-//	}
-//	public Set<TestResult> getTestResult() {
-//		return testResult;
-//	}
-//	public void setTestResult(Set<TestResult> testResult) {
-//		this.testResult = testResult;
-//	}
-=======
+
 	
 	@OneToMany(cascade = CascadeType.ALL, targetEntity = TestResult.class, fetch = FetchType.EAGER)
 	@JoinColumn(name = "appointment_no", referencedColumnName = "appointmentId")
 	private Set<TestResult> testResult;
 
->>>>>>> branch 'master' of https://github.com/nomaanhusain/Sprint-Group-6.git
 }
