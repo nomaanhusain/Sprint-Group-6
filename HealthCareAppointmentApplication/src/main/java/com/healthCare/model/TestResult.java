@@ -11,7 +11,7 @@ import lombok.Data;
 public class TestResult {
 	@Id
 	@GeneratedValue
-	private int id;
+	private int testResultId;
 	private double testReading;
 	private String condition;
 	private Appointment appointment;
