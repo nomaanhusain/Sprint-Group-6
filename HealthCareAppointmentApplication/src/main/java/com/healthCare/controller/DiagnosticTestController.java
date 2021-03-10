@@ -36,12 +36,12 @@ public class DiagnosticTestController {
 		List<DiagnosticTest> list= digServices.getTestsOfDiagnosticCenter(centerId);
 		return list;
 	}
-	@PutMapping("/addTest")
+	@PostMapping("/addTest")
 	public ResponseEntity<DiagnosticTest> addNewTest(DiagnosticTest test) {
 		DiagnosticTest dig=digServices.addNewTest(test);
 		return new ResponseEntity<DiagnosticTest>(dig,HttpStatus.ACCEPTED);
 	}
-	@PostMapping("/UpdateTest")
+	@PutMapping("/UpdateTest")
 	public ResponseEntity<DiagnosticTest> updateTestDetail(@RequestBody DiagnosticTest test) {
 		DiagnosticTest dig=digServices.updateTestDetail(test);
 		return new ResponseEntity<DiagnosticTest>(dig,HttpStatus.OK);
