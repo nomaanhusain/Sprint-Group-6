@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -24,6 +25,9 @@ public class DiagnosticTest {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="centerId",referencedColumnName = "testId")
 	private Set<DiagnosticCenter> diagnosticCenter;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="appointmentId")
+	private Appointment appointment;
 	
 	
 	public int getTestId() {
