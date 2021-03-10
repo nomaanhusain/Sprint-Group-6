@@ -26,7 +26,7 @@ public class DiagnosticTest {
 	@JoinColumn(name="test_id",referencedColumnName="testId")
 	private Set<DiagnosticCenter> diagnosticCenter;
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="appointmentId")
+	@JoinColumn(name="appointment_Id",referencedColumnName="appointmentId")
 	private Appointment appointment;
 	
 	
