@@ -22,6 +22,6 @@ public class DiagnosticTest {
 	private String normalValue;
 	private String units;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="id",referencedColumnName = "testId")
+	@JoinColumn(name="centerId",referencedColumnName = "testId")
 	private Set<DiagnosticCenter> diagnosticCenter;
 }
