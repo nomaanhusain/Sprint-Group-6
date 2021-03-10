@@ -40,7 +40,7 @@ public class DiagnosticTestController {
 	}
 
 	@PostMapping("/addTest")
-	public ResponseEntity<DiagnosticTest> addNewTest(DiagnosticTest test) {
+	public ResponseEntity<DiagnosticTest> addNewTest(@RequestBody DiagnosticTest test) {
 		DiagnosticTest dig = digServices.addNewTest(test);
 		return new ResponseEntity<DiagnosticTest>(dig, HttpStatus.ACCEPTED);
 	}
