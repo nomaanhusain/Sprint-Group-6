@@ -27,10 +27,19 @@ public class IPatientRepository {
 	}
 
 	public Patient viewPatient(String patientUserName) {
-		Optional<Patient> optional = patient.findByName(patientUserName);
-		return optional.orElseThrow(()->new PatientNotFoundException("Patient Not Exists"));
+		Patient optional = patient.findByName(patientUserName);
+		if(optional==null)
+		{
+			Throw(new PatientNotFoundException("Patient Not Exists"));
+		}
+		return optional;
 	}
 	
+	private void Throw(PatientNotFoundException patientNotFoundException) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	//not complete
 	public List<TestResult> getAllTestResult(String patientUserName) {
 		return null;

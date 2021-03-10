@@ -30,7 +30,7 @@ public class Appointment {
 	private Date appointmentDate;
 	private boolean approvalStatus;
 	
-	@OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "appointments",cascade = CascadeType.ALL)
 	private Set<DiagnosticTest> diagnosticTests;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -41,10 +41,9 @@ public class Appointment {
 	@JoinColumn(name = "id")
 	private DiagnosticCenter diagnosticCenter;
 	
-	@OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "appointments",cascade = CascadeType.ALL)
 	private Set<TestResult> testResult;
-	
-	
+		
 	public int getId() {
 		return id;
 	}
@@ -85,7 +84,6 @@ public class Appointment {
 		this.testResult = testResult;
 	}
 	public boolean getApprovalStatus() {
-		// TODO Auto-generated method stub
 		return approvalStatus;
 	}
 }
