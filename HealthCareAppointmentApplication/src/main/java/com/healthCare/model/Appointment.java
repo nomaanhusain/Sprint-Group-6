@@ -46,7 +46,10 @@ public class Appointment {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "center_id", referencedColumnName="centerId")
 	private DiagnosticCenter diagnosticCenter;
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/nomaanhusain/Sprint-Group-6.git
 	
 	@OneToMany(cascade = CascadeType.ALL, targetEntity = TestResult.class, fetch = FetchType.EAGER)
 	@JoinColumn(name = "appointment_no", referencedColumnName = "appointmentId")

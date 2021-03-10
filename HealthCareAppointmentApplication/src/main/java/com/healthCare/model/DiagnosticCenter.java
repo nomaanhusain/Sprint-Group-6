@@ -39,9 +39,6 @@ import lombok.NoArgsConstructor;
 		@Column(name = "Center_id")
 		private int id;
 
-		@GeneratedValue(strategy = GenerationType.AUTO) //primary key generation automatically according to database.
-		private int centerId;
-
 		private String name;
 		private String contactNo;
 		private String address;
