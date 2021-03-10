@@ -56,7 +56,7 @@ public class DiagnosticCenterImpl implements IDiagnosticCenter {
 	}
 
 	@Override
-	//to add test
+	//to add diagnostic test
 	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
 		// TODO Auto-generated method stub
 	
