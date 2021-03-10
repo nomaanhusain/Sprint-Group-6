@@ -26,7 +26,7 @@ public class Appointment {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private int appointmentId;
 	private Date appointmentDate;
 	private boolean approvalStatus;
 	
@@ -38,18 +38,18 @@ public class Appointment {
 	private Patient patient;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "centerId")
 	private DiagnosticCenter diagnosticCenter;
 	
 	@OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<TestResult> testResult;
 	
 	
-	public int getId() {
-		return id;
+	public int getAppointmentId() {
+		return appointmentId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setAppointmentId(int appointmentId) {
+		this.appointmentId = appointmentId;
 	}
 	public Date getAppointmentDate() {
 		return appointmentDate;

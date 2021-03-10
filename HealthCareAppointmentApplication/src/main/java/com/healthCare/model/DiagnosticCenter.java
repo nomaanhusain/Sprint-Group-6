@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO) //primary key generation automatically according to database.
-		private int id;
+		private int centerId;
 		private String name;
 		private String contactNo;
 		private String address;
