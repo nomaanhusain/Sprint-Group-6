@@ -21,23 +21,5 @@ public class TestResult {
 	@JoinColumn(name="appointment_id", referencedColumnName = "appointmentId")
 	private Appointment appointment;
 	
-	
-	public double getTestReading() {
-		return testReading;
-	}
-	public void setTestReading(double testReading) {
-		this.testReading = testReading;
-	}
-	public String getCondition() {
-		return condition;
-	}
-	public void setCondition(String condition) {
-		this.condition = condition;
-	}
-	public Appointment getAppointment() {
-		return appointment;
-	}
-	public void setAppointment(Appointment appointment) {
-		this.appointment = appointment;
-	}
+
 }
