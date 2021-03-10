@@ -26,30 +26,36 @@ import com.healthCare.service.IDiagnosticTestService;
 public class DiagnosticTestController {
 	@Autowired
 	private IDiagnosticTestService digServices;
+
 	@GetMapping("/DiagnosticTestAll")
-	public List<DiagnosticTest> getAllTest(){
-		List<DiagnosticTest> list=digServices.getAllTest();
+	public List<DiagnosticTest> getAllTest() {
+		List<DiagnosticTest> list = digServices.getAllTest();
 		return list;
 	}
+
 	@GetMapping("/TestsOfDiagnosticCenters/{centerId}")
-	public List<DiagnosticTest> getTestsOfDiagnosticCenter(@PathVariable int centerId){
-		List<DiagnosticTest> list= digServices.getTestsOfDiagnosticCenter(centerId);
+	public List<DiagnosticTest> getTestsOfDiagnosticCenter(@PathVariable int centerId) {
+		List<DiagnosticTest> list = digServices.getTestsOfDiagnosticCenter(centerId);
 		return list;
 	}
+
 	@PostMapping("/addTest")
 	public ResponseEntity<DiagnosticTest> addNewTest(DiagnosticTest test) {
-		DiagnosticTest dig=digServices.addNewTest(test);
-		return new ResponseEntity<DiagnosticTest>(dig,HttpStatus.ACCEPTED);
+		DiagnosticTest dig = digServices.addNewTest(test);
+		return new ResponseEntity<DiagnosticTest>(dig, HttpStatus.ACCEPTED);
 	}
+
 	@PutMapping("/UpdateTest")
 	public ResponseEntity<DiagnosticTest> updateTestDetail(@RequestBody DiagnosticTest test) {
-		DiagnosticTest dig=digServices.updateTestDetail(test);
-		return new ResponseEntity<DiagnosticTest>(dig,HttpStatus.OK);
+		DiagnosticTest dig = digServices.updateTestDetail(test);
+		return new ResponseEntity<DiagnosticTest>(dig, HttpStatus.OK);
 	}
+
 	@DeleteMapping("/RemoveTestFromCenter/{centerId}")
-	public ResponseEntity<DiagnosticTest> removeTestFromDiagnosticCenter(@PathVariable int centerId,@RequestBody DiagnosticTest test) {
-		DiagnosticTest dig=digServices.removeTestFromDiagnosticCenter(centerId, test);
-		return new ResponseEntity<DiagnosticTest>(dig,HttpStatus.OK);
+	public ResponseEntity<DiagnosticTest> removeTestFromDiagnosticCenter(@PathVariable int centerId,
+			@RequestBody DiagnosticTest test) {
+		DiagnosticTest dig = digServices.removeTestFromDiagnosticCenter(centerId, test);
+		return new ResponseEntity<DiagnosticTest>(dig, HttpStatus.OK);
 	}
-	
+
 }
