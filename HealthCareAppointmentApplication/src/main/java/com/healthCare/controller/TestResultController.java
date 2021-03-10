@@ -38,9 +38,9 @@ public class TestResultController {
 		return new ResponseEntity<TestResult>(t, HttpStatus.ACCEPTED);
 	}
 
-	@DeleteMapping("/removetestresult/{id}")
-	public ResponseEntity<String> removeTestResult(@PathVariable int id) {
-		testResultService.removeTestResult(id);
+	@DeleteMapping("/removetestresult/{testId}")
+	public ResponseEntity<String> removeTestResult(@PathVariable int testId) {
+		testResultService.removeTestResult(testId);
 		return new ResponseEntity<String>("Record Removed", HttpStatus.OK);
 	}
 
