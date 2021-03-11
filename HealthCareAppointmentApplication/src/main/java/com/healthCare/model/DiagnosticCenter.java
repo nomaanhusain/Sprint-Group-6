@@ -19,9 +19,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import javax.persistence.ManyToMany;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,8 +43,8 @@ import lombok.NoArgsConstructor;
 		 @ElementCollection(targetClass=String.class)
 		private List<String> servicesOffered;
 
-		 @ManyToMany(cascade=CascadeType.ALL)
-		 @JoinColumn(name="test_offered",referencedColumnName="testId")
+		 @ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+		 @JoinTable(name="test_offered",joinColumns= {@JoinColumn(name="center_id")},inverseJoinColumns= {@JoinColumn(name="test_id")})
 	    private Set<DiagnosticTest> tests=new HashSet<>();
 
 
