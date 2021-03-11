@@ -3,9 +3,13 @@ package com.healthCare.dao;
 import org.springframework.stereotype.Repository;
 import com.healthCare.model.User;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import com.healthCare.model.User;
+
 @Repository
-public interface IUserRepository {
-	public User validateUser(String username, String password);
-	public User addUser(User user);
-	public User removeUser(User user);
+public interface IUserRepository extends JpaRepository<User, Long> {
+    @Query("SELECT u FROM User u WHERE u.email = ?1")
+    public User findByEmail(String email); 
 }
