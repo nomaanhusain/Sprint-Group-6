@@ -15,13 +15,17 @@ public interface DiagnosticCenterDAO extends JpaRepository<DiagnosticCenter,Inte
 
 	Optional<DiagnosticCenter> findByName(String centername);
 
-	List<Appointment> findAllCenter(String centerName);
+	DiagnosticCenter removeDiagnosticCenter(int id);
 
-	DiagnosticTest addTest(int diagnosticcenterId, int testId);
+	List<Appointment> getListOfAppointments(String centerName);
 
 	DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName);
 
-	List<Appointment> getListOfAppointments(String centerName);
+	DiagnosticTest addTest(int diagnosticcenterId, int testId);
+
+	List<Appointment> findAllCenter(String centerName);
+
+	
 
 	
 } 

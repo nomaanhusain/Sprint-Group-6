@@ -50,6 +50,6 @@ import lombok.NoArgsConstructor;
 		 @JoinColumn(name="test_offered",referencedColumnName="testId")
 	    private Set<DiagnosticTest> tests=new HashSet<>();
 
-;
+
 	 
 }
