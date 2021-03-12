@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.healthCare.exception.CenterNotFoundException;
 import com.healthCare.exception.InvalidUsernameException;
+import com.healthCare.exception.UsernameNotFoundException;
 
 @RestControllerAdvice
 public class CustomExceptionHandler {
@@ -19,5 +20,9 @@ public class CustomExceptionHandler {
 	@ExceptionHandler(InvalidUsernameException.class)
 	public ResponseEntity<String> handleUserNotFound(InvalidUsernameException iue) {
 		return new ResponseEntity<String>(iue.getMessage(), HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler(UsernameNotFoundException.class)
+	public ResponseEntity<String> handleUsernameNotFound(UsernameNotFoundException unf) {
+		return new ResponseEntity<String>(unf.getMessage(), HttpStatus.NOT_FOUND);
 	}
 }
