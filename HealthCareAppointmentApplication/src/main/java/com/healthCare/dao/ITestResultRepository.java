@@ -32,8 +32,8 @@ public class ITestResultRepository {
 		testResultDao.delete(tr);
 		return tr;
 	}
-	public Set<TestResult> viewResultsByPatient(Patient patient){
-		Set<TestResult> set=testResultDao.findAllByPatient(patient);
+	public Set<TestResult> viewResultsByPatient(int patientId){
+		Set<TestResult> set=testResultDao.findAllByPatientId(patientId);
 		return set;
 	}
 }

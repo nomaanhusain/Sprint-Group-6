@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,8 +30,9 @@ public class DiagnosticTest {
 	private String normalValue;
 	private String units;
 
-	@ManyToMany(cascade = CascadeType.ALL,mappedBy="tests")
-
+	
+	@OneToMany(fetch=FetchType.EAGER,targetEntity = DiagnosticTest.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "test_id", referencedColumnName = "test_id")
 	private Set<DiagnosticCenter> diagnosticCenter;
 	
 	
