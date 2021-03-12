@@ -31,13 +31,14 @@ public class LoginController {
 		}
 	}
 
-	@GetMapping("/logout")
-	public ResponseEntity<String> logout() {
+	@GetMapping(value="/logout")
+	public ResponseEntity<String> logout(@RequestBody Users user) {
+		Users u=loginService.logout(user);
 		if (loginStatus) {
 			loginStatus = false;
-			return new ResponseEntity<String>("Logged Out", HttpStatus.OK);
+			return new ResponseEntity<String>("Logged Out User "+u.getUsername(), HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("Please Login First", HttpStatus.OK);
 	}
-
 }
+

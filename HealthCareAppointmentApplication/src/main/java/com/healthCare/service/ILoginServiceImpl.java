@@ -10,6 +10,7 @@ import com.healthCare.dao.IUserRepository;
 import com.healthCare.dao.UserRepository;
 import com.healthCare.exception.InvalidUsernameException;
 import com.healthCare.model.Users;
+
 @Service
 public class ILoginServiceImpl implements ILoginService {
 	@Autowired
@@ -17,13 +18,12 @@ public class ILoginServiceImpl implements ILoginService {
 
 	@Override
 	public Users login(Users user) {
-		Users username= loginRepository.validateUsers(user.getUsername(), user.getPassword());
-		
+		Users username = loginRepository.validateUsers(user.getUsername(), user.getPassword());
 
+		if (username == null) {
+			throw new InvalidUsernameException(
+					"The username or password that you've entered doesn't match to any account");
 
-		if (username==null) {
-			throw new InvalidUsernameException("The username or password that you've entered doesn't match to any account");
-			
 		}
 
 		return username;
@@ -32,6 +32,13 @@ public class ILoginServiceImpl implements ILoginService {
 	@Override
 	public Users logout(Users user) {
 		// TODO Auto-generated method stub
-		return null;
+		Users username = loginRepository.validateUsers(user.getUsername(), user.getPassword());
+
+		if (username == null) {
+			throw new InvalidUsernameException(
+					"The username or password that you've entered doesn't match to any account");
+
+		}
+		return username;
 	}
 }
