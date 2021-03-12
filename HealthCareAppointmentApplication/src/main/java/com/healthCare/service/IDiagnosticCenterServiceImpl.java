@@ -20,10 +20,7 @@ public class IDiagnosticCenterServiceImpl implements IDiagnosticCenter {
 	
 	@Autowired
 	private IDiagnosticCenterRepository centerDao;
-	public IDiagnosticCenterServiceImpl() {
-		// TODO Auto-generated constructor stub
-	}
-	
+
 	@Override
 	public List<DiagnosticCenter> getAllDiagnosticCenters() {
 		List<DiagnosticCenter> centerList=centerDao.getAllDiagnosticCenter();
@@ -32,61 +29,52 @@ public class IDiagnosticCenterServiceImpl implements IDiagnosticCenter {
 
 	@Override
 	public DiagnosticCenter addDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
-        DiagnosticCenter  addCenter= centerDao.addDiagnosticCenter(diagnosticCenter);
+		DiagnosticCenter  addCenter= centerDao.addDiagnosticCenter(diagnosticCenter);
 		return addCenter;
 	}
 
 	@Override
 	public DiagnosticCenter getDiagnosticCenterById(int diagnosticCenterId) {
-	    DiagnosticCenter diag=centerDao.getDiagnosticCenterById(diagnosticCenterId);
-		
+		DiagnosticCenter diag=centerDao.getDiagnosticCenterById(diagnosticCenterId);
 		return diag;
 	}
 
-	
 	@Override
 	public DiagnosticCenter updateDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
 		DiagnosticCenter updateCenter=centerDao.updateDiagnosticCenter(diagnosticCenter);
-
 		return updateCenter;
 	}
 
 	@Override
 	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
-		// TODO Auto-generated method stub
 		DiagnosticTest view_test=centerDao.viewTestDetails(diagnosticCenterId,testName);
 		return view_test;
 	}
 
 	@Override
-	//to add diagnostic test
 	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
 		DiagnosticTest diag_test = centerDao.addTest(diagnosticcenterId,testId);
 		return diag_test;
-	
 	}
 
 	@Override
 	public DiagnosticCenter getDiagnosticCenter(String centername) {
-		
 		DiagnosticCenter centerName=centerDao.getDiagnosticCenter(centername);
 		return centerName;
-		
+
 	}
 
 	@Override
 	public DiagnosticCenter removeDiagnosticCenter(int id) {
-	   DiagnosticCenter centerId= centerDao.removeDiagnosticCenter(id);
-	 return centerId;
-
+		DiagnosticCenter centerId= centerDao.removeDiagnosticCenter(id);
+		return centerId;
 	}
 
 	@Override
 	public List<Appointment> getListOfAppointments(String centerName) {
-		
 		return centerDao.getListOfAppointments(centerName);
-		
-		
+
 	}
+
 
 }
