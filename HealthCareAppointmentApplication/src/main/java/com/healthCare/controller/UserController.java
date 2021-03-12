@@ -7,46 +7,48 @@ import java.util.List;
  
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import com.healthCare.model.User;
-import com.healthCare.dao.IUserRepository;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.healthCare.model.Users;
+import com.healthCare.security.StringEncrypter;
+import com.healthCare.service.IUserService;
+import com.healthCare.dao.UserRepository;
 
  
 
 @Controller
+@RequestMapping(value = "/hcr")
 public class UserController {
     @Autowired
-    private IUserRepository userRepo;
+    private IUserService userService;
      
-    @GetMapping("")
-    public String viewHomePage() {
-        return "index";
-    }
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new User());
+   
+    @PostMapping("/addUser")
+    public ResponseEntity<String> addUser(@RequestBody Users user) {
+       // user.setPassword(encodedPassword);
+    	StringEncrypter encrypt=new StringEncrypter();
+		String encPass=encrypt.encrypt(user.getPassword());
+		user.setPassword(encPass);
+        userService.addUser(user);
          
-        return "signup_form";
+        return new ResponseEntity<String>("Success",HttpStatus.CREATED);
     }
-    @PostMapping("/process_register")
-    public String processRegister(User user) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-         
-        userRepo.save(user);
-         
-        return "register_success";
+    @DeleteMapping("/deleteUser")
+    public ResponseEntity<String> removeUser(@RequestBody Users user){
+    	StringEncrypter encrypt=new StringEncrypter();
+		String dcpPass=encrypt.decrypt(user.getPassword());
+		user.setPassword(dcpPass);
+		userService.removeUser(user);
+		return new ResponseEntity<String>("Removed",HttpStatus.OK);
     }
-    @GetMapping("/users")
-    public String listUsers(Model model) {
-        List<User> listUsers = userRepo.findAll();
-        model.addAttribute("listUsers", listUsers);
-         
-        return "users";
-    }
+    
+   
 }

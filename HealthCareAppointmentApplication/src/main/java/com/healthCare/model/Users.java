@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User {
+public class Users {
 	@Id
 	@GeneratedValue
-	public int id;
+	public int usersId;
 	public String username;
 	public String password;;
 	public String role;

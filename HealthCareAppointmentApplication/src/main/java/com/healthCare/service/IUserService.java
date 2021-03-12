@@ -1,9 +1,9 @@
 package com.healthCare.service;
 
-import com.healthCare.model.User;
+import com.healthCare.model.Users;
 
 public interface IUserService {
-	public User validateUser(String username, String password);
-	public User addUser(User user);
-	public User removeUser(User user);
+	public Users validateUser(String username, String password);
+	public Users addUser(Users user);
+	public Users removeUser(Users user);
 }
