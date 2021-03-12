@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,28 +21,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.healthCare.model.Users;
 import com.healthCare.security.StringEncrypter;
 import com.healthCare.service.IUserService;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import com.healthCare.dao.UserRepository;
 
  
 
 @Controller
 @RequestMapping(value = "/hcr")
+@Api(value = "User", tags = { "User" })
 public class UserController {
     @Autowired
     private IUserService userService;
-     
+    
+    @GetMapping("/validateUser/{username}")
+    @ApiOperation(value = "Validate a user", response = Users.class)
+    public ResponseEntity<String> validateUser(@PathVariable String username,@RequestBody String password){
+    	Users u=userService.validateUser(username, password);
+    	return new ResponseEntity<String>("User Exists",HttpStatus.FOUND);
+    }
    
     @PostMapping("/addUser")
+    @ApiOperation(value = "Add a user", response = Users.class)
     public ResponseEntity<String> addUser(@RequestBody Users user) {
        // user.setPassword(encodedPassword);
-    	StringEncrypter encrypt=new StringEncrypter();
-		String encPass=encrypt.encrypt(user.getPassword());
-		user.setPassword(encPass);
+    	
         userService.addUser(user);
          
         return new ResponseEntity<String>("Success",HttpStatus.CREATED);
     }
     @DeleteMapping("/deleteUser")
+    @ApiOperation(value = "Remove a user", response = Users.class)
     public ResponseEntity<String> removeUser(@RequestBody Users user){
 		
 		userService.removeUser(user);
