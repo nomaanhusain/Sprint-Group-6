@@ -25,8 +25,7 @@ public class AppointmentController{
 
 	@Autowired
 	private  IAppointmentServiceImpl aservice;
-	
-	
+		
 	//working
 	@PostMapping(value = "/addAppointment")
 	public ResponseEntity<String> addAppointment(@RequestBody Appointment appo) {

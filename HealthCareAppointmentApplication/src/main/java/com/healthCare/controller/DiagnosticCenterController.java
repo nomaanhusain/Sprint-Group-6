@@ -115,5 +115,4 @@ public class DiagnosticCenterController {
 			return  new ResponseEntity<List<Appointment>>(list,HttpStatus.OK);
 		}
 		
-		
 }

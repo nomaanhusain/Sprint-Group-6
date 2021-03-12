@@ -45,7 +45,7 @@ public class PatientController {
 		return new ResponseEntity<Patient>(patient1,HttpStatus.OK);
 	}
 	
-	//workinh
+	//working
 	@GetMapping(value="/viewPatient/{patientName}")
 	public ResponseEntity<String> viewPatient(@PathVariable String patientName)
 	{
