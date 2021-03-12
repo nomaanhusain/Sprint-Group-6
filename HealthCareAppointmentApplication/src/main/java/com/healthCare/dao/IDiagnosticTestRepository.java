@@ -28,7 +28,7 @@ public class IDiagnosticTestRepository {
 		return list;
 	}
 
-	// This might be wrong, please check!
+	
 	public DiagnosticTest updateTestDetail(DiagnosticTest test) {
 		DiagnosticTest dig = digTestDao.save(test);
 		return dig;

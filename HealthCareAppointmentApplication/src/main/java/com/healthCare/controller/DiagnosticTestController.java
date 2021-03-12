@@ -18,40 +18,50 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.healthCare.model.DiagnosticTest;
+import com.healthCare.model.Users;
 import com.healthCare.service.IDiagnosticTestService;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Controller
 @RestController
 @RequestMapping("/hcdtc")
+@Api(value = "Diagnostic Test", tags = { "Diagnostic Test" })
 public class DiagnosticTestController {
 	@Autowired
 	private IDiagnosticTestService digServices;
 
 	@GetMapping("/DiagnosticTestAll")
-	public List<DiagnosticTest> getAllTest() {
+	@ApiOperation(value = "List all the tests available", response = DiagnosticTest.class)
+	public ResponseEntity<List<DiagnosticTest>> getAllTest() {
 		List<DiagnosticTest> list = digServices.getAllTest();
-		return list;
+		return new ResponseEntity<List<DiagnosticTest>>(list, HttpStatus.OK);
 	}
 
 	@GetMapping("/TestsOfDiagnosticCenters/{centerId}")
-	public List<DiagnosticTest> getTestsOfDiagnosticCenter(@PathVariable int centerId) {
+	@ApiOperation(value = "List all the tests available at a center", response = DiagnosticTest.class)
+	public ResponseEntity<List<DiagnosticTest>> getTestsOfDiagnosticCenter(@PathVariable int centerId) {
 		List<DiagnosticTest> list = digServices.getTestsOfDiagnosticCenter(centerId);
-		return list;
+		return new ResponseEntity<List<DiagnosticTest>>(list, HttpStatus.OK);
 	}
 
 	@PostMapping("/addTest")
+	@ApiOperation(value = "Add Test", response = DiagnosticTest.class)
 	public ResponseEntity<DiagnosticTest> addNewTest(@RequestBody DiagnosticTest test) {
 		DiagnosticTest dig = digServices.addNewTest(test);
-		return new ResponseEntity<DiagnosticTest>(dig, HttpStatus.ACCEPTED);
+		return new ResponseEntity<DiagnosticTest>(dig, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/UpdateTest")
+	@ApiOperation(value = "Update Test", response = DiagnosticTest.class)
 	public ResponseEntity<DiagnosticTest> updateTestDetail(@RequestBody DiagnosticTest test) {
 		DiagnosticTest dig = digServices.updateTestDetail(test);
 		return new ResponseEntity<DiagnosticTest>(dig, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/RemoveTestFromCenter/{centerId}")
+	@ApiOperation(value = "Remove a test from a center", response = DiagnosticTest.class)
 	public ResponseEntity<DiagnosticTest> removeTestFromDiagnosticCenter(@PathVariable int centerId,
 			@RequestBody DiagnosticTest test) {
 		DiagnosticTest dig = digServices.removeTestFromDiagnosticCenter(centerId, test);

@@ -15,36 +15,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.healthCare.model.DiagnosticTest;
 import com.healthCare.model.Patient;
 import com.healthCare.model.TestResult;
 import com.healthCare.service.ITestResultService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @Controller
 @RestController
 @RequestMapping("/hctrc")
+@Api(value = "Test Result", tags = { "Test Result" })
 public class TestResultController {
 	@Autowired
 	private ITestResultService testResultService;
 
 	@PostMapping("/addtestresult")
+	@ApiOperation(value = "Add Test Result", response = TestResult.class)
 	public ResponseEntity<TestResult> addTestResult(@RequestBody TestResult tr) {
 		TestResult t = testResultService.addTestResult(tr);
 		return new ResponseEntity<TestResult>(t, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/updatetestresult")
+	@ApiOperation(value = "Update Test Result", response = TestResult.class)
 	public ResponseEntity<TestResult> updateTestResult(@RequestBody TestResult tr) {
 		TestResult t = testResultService.updateTestResult(tr);
 		return new ResponseEntity<TestResult>(t, HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/removetestresult/{testId}")
+	@ApiOperation(value = "Delete Test Result", response = TestResult.class)
 	public ResponseEntity<String> removeTestResult(@PathVariable int testId) {
 		testResultService.removeTestResult(testId);
 		return new ResponseEntity<String>("Record Removed", HttpStatus.OK);
 	}
 
 	@GetMapping("/viewResultByPatientId/{patientId}")
+	@ApiOperation(value = "View results by Patient Id", response = TestResult.class)
 	public ResponseEntity<Set<TestResult>> viewResultByPatient(@PathVariable int patientId) {
 		Set<TestResult> set = testResultService.viewResultsByPatientId(patientId);
 		return new ResponseEntity<Set<TestResult>>(set, HttpStatus.OK);
