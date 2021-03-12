@@ -4,11 +4,12 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,6 +29,7 @@ public class Appointment {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="appointment_id")
 	private int appointmentId;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
@@ -35,8 +37,8 @@ public class Appointment {
 	
 	private boolean approvalStatus;
 	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = DiagnosticTest.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "appointment_id", referencedColumnName = "appointmentId")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "appointment_diagnostictest", joinColumns = { @JoinColumn(name = "appointment_id") }, inverseJoinColumns = { @JoinColumn(name = "test_id")})
 	private Set<DiagnosticTest> diagnosticTests;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -46,10 +48,8 @@ public class Appointment {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "center_id", referencedColumnName="centerId")
 	private DiagnosticCenter diagnosticCenter;
-
 	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = TestResult.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "appointment_no", referencedColumnName = "appointmentId")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Appointment_testresult", joinColumns = { @JoinColumn(name = "appointment_id") }, inverseJoinColumns = { @JoinColumn(name = "testresult_id")})
 	private Set<TestResult> testResult;
-
 }

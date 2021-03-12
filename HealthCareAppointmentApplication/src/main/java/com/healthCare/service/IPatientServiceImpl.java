@@ -26,8 +26,8 @@ public class IPatientServiceImpl implements IPatientService {
 	}
 
 	@Override
-	public Patient viewPatient(String patientUserName) {
-		return prepository.viewPatient(patientUserName);
+	public Patient viewPatient(String patientName) {
+		return prepository.viewPatient(patientName);
 	}
 
 	@Override
@@ -35,13 +35,22 @@ public class IPatientServiceImpl implements IPatientService {
 		return prepository.getAllTestResult(patientUserName);
 	}
 
+	/*
+	 * @Override public TestResult viewTestResult(int testResultId) { return
+	 * prepository.viewTestResult(testResultId); }
+	 */
+	
 	@Override
 	public TestResult viewTestResult(int testResultId) {
-		return prepository.viewTestResult(testResultId);
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
 	
 	public Patient getPatientById(Integer pid) {
 		return prepository.getPatientById(pid);
 	}
+
+	
 	
 }

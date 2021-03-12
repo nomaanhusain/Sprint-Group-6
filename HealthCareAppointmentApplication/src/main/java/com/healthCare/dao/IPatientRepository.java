@@ -15,8 +15,10 @@ public class IPatientRepository {
 
 	@Autowired
 	private PatientDAO patient;
-	@Autowired
-	private TestResultDAO testResult;
+
+	/*
+	 * @Autowired private TestResultDAO testResult;
+	 */
 	
 	public Patient registerPatient(Patient patient1) {
 		return patient.save(patient1);
@@ -26,14 +28,11 @@ public class IPatientRepository {
 		return patient.save(patient1);
 	}
 
-	public Patient viewPatient(String patientUserName) {
-		Patient optional = patient.findByName(patientUserName);
-		if(optional==null)
-		{
-			Throw(new PatientNotFoundException("Patient Not Exists"));
+	public Patient viewPatient(String patientName) {
+		Optional<Patient> optional=patient.findByName(patientName);
+		Patient emp=optional.orElseThrow(()->new PatientNotFoundException("Patient Not Exists"));
+		return emp;
 		}
-		return optional;
-	}
 	
 	private void Throw(PatientNotFoundException patientNotFoundException) {
 		// TODO Auto-generated method stub
@@ -45,11 +44,10 @@ public class IPatientRepository {
 		return null;
 	}
 
-	public TestResult viewTestResult(int testResultId) {
-		Optional<TestResult> optional = testResult.findById(testResultId);
-		return optional.get();
-	}
-	
+	/*
+	 * public TestResult viewTestResult(int testResultId) { Optional<TestResult>
+	 * optional = testResult.findById(testResultId); return optional.get(); }
+	 */
 	public Patient getPatientById(Integer pid) {
 		Optional<Patient> optional=patient.findById(pid);
 		Patient emp=optional.orElseThrow(()->new PatientNotFoundException("Patient Not Exists"));

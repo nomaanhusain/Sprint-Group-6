@@ -22,10 +22,11 @@ public class IAppointmentRepository {
 		return appointment1;	
 	}
 	
-	//I don't have idea how to implement
+	
 	public Set<Appointment> viewAppointments(String patientName) {
-		Patient optional = patient.findByName(patientName);
-		return optional.getAppointment();
+		
+		
+		return null;
 	}
 	
 	public Appointment viewAppointment(int appointmentId) {

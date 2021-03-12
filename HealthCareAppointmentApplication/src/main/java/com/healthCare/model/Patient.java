@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,9 +31,10 @@ public class Patient {
 	private int age;
 	private String gender;
 	
-	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = Appointment.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
-	private Set<Appointment> appointment;
-	
+	//@OneToMany(cascade = CascadeType.ALL, targetEntity = Appointment.class, fetch = FetchType.EAGER)
+	//@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "patient_appointment", joinColumns = { @JoinColumn(name = "patient_id") }, inverseJoinColumns = { @JoinColumn(name = "appointment_id")})
+	private Set<Appointment> appointment;	
 }

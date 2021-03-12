@@ -24,12 +24,15 @@ public class PatientController {
 	@Autowired
 	private  IPatientServiceImpl pservice;
 	
+	
+	//working
 	@PostMapping(value = "/registerPatient")
 	public ResponseEntity<String> registerPatient(@RequestBody Patient patient) {
 		Patient pati= pservice.registerPatient(patient);
 		return new ResponseEntity<String>("Patient with ID :" + pati.getPatientId()+ " created Successfully", HttpStatus.CREATED);
 	}
 	
+	//working
 	@PutMapping(value = "/updatePatient/{pid}")
 	public ResponseEntity<Patient> updatePatient(@PathVariable int pid,@RequestBody Patient patient)
 	{
@@ -42,13 +45,16 @@ public class PatientController {
 		return new ResponseEntity<Patient>(patient1,HttpStatus.OK);
 	}
 	
+	//workinh
 	@GetMapping(value="/viewPatient/{patientName}")
-	public ResponseEntity<Patient> viewPatient(@PathVariable String patientName)
+	public ResponseEntity<String> viewPatient(@PathVariable String patientName)
 	{
 		Patient patient=pservice.viewPatient(patientName);
-		return new ResponseEntity<Patient>(patient,HttpStatus.OK);
+		return new ResponseEntity<String>("Patient id is: "+patient.getPatientId() +"\nPatient name: "+patient.getName()+"\nPatient Age: "+patient.getAge()+"\nPatient  gender: "+patient.getGender()+"\n Patient Phone No: "+patient.getPhoneNo(),HttpStatus.OK);
 	}
 	
+	
+	//not working
 	@GetMapping(value="/getAllTestResult/{patientUserName}")
 	public ResponseEntity<List<TestResult>> getAllTestResult(@PathVariable String patientUserName)
 	{
@@ -56,11 +62,11 @@ public class PatientController {
 		return new ResponseEntity<List<TestResult>>(list,HttpStatus.OK);
 	}
 	
+	//not working
 	@GetMapping(value="/viewTestResult/{testResultId}")
 	public ResponseEntity<TestResult> viewTestResult(@PathVariable int testResultId)
 	{
 		TestResult result=pservice.viewTestResult(testResultId);
 		return new ResponseEntity<TestResult>(result,HttpStatus.OK);
 	}
-	
 }

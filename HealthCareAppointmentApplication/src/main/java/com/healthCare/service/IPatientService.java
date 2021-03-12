@@ -11,7 +11,7 @@ public interface IPatientService {
 	
 	public Patient updatePatient(Patient patient);
 	
-	public Patient viewPatient(String patientUserName);
+	public Patient viewPatient(String patientName);
 	
 	List<TestResult> getAllTestResult(String patientUserName);
 	

@@ -1,7 +1,5 @@
 package com.healthCare.controller;
 
-
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -23,24 +21,29 @@ import com.healthCare.service.IAppointmentServiceImpl;
 
 @RestController
 @RequestMapping(value = "/hcac")	//hcac = health care appointment controller
-public class AppointmentController {
+public class AppointmentController{
 
 	@Autowired
 	private  IAppointmentServiceImpl aservice;
 	
+	
+	//working
 	@PostMapping(value = "/addAppointment")
 	public ResponseEntity<String> addAppointment(@RequestBody Appointment appo) {
 		Appointment appo1= aservice.addAppointment(appo);
 		return new ResponseEntity<String>("Appointment with ID :" + appo1.getAppointmentId()+ " created Successfully", HttpStatus.CREATED);
 	}
 	
+	//not working
 	@GetMapping(value="/viewAppointments/{patientName}")
 	public ResponseEntity<Set<Appointment>> viewAppointments(@PathVariable String patientName)
 	{
 		Set<Appointment> appo=aservice.viewAppointments(patientName);
 		return new ResponseEntity<Set<Appointment>>(appo,HttpStatus.OK);
 	}
+
 	
+	//not working
 	@GetMapping(value="/viewAppointment/{patientId}")
 	public ResponseEntity<Appointment> viewAppointment(@PathVariable int patientId)
 	{
@@ -48,15 +51,23 @@ public class AppointmentController {
 		return new ResponseEntity<Appointment>(appo,HttpStatus.OK);
 	}
 	
+	//working
 	@PutMapping(value = "/updateAppointment/{aid}")
-	public ResponseEntity<Appointment> updateAppointment(@PathVariable int aid,@RequestBody Date date)
+	public ResponseEntity<Appointment> updateAppointment(@PathVariable int aid,@RequestBody Appointment appo)
 	{
 		Appointment appointment=aservice.viewAppointment(aid);
-		appointment.setAppointmentDate(date);
+		appointment.setAppointmentDate(appo.getAppointmentDate());
+		appointment.setApprovalStatus(appo.isApprovalStatus());
+		appointment.setDiagnosticCenter(appo.getDiagnosticCenter());
+		appointment.setPatient(appo.getPatient());
+		appointment.setDiagnosticTests(appo.getDiagnosticTests());
+		appointment.setTestResult(appo.getTestResult());
 		aservice.addAppointment(appointment);
 		return new ResponseEntity<Appointment>(appointment,HttpStatus.OK);
 	}
 	
+	
+	//not working
 	@GetMapping(value="/getAppointmentList/{centerid},{test},{status}")
 	public ResponseEntity<List<Appointment>> getAppointmentList(@PathVariable int centreId, String test, int status)
 	{
@@ -64,6 +75,8 @@ public class AppointmentController {
 		return new ResponseEntity<List<Appointment>>(appo,HttpStatus.OK);
 	}
 	
+	
+	//working
 	@DeleteMapping(value = "/removeAppointment")
 	public ResponseEntity<String> removeAppointment(@RequestBody Appointment appo)
 	{
