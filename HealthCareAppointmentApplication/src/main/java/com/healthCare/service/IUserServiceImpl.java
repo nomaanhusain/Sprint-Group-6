@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.healthCare.dao.IUserRepository;
 import com.healthCare.dao.UserRepository;
 import com.healthCare.exception.UsernameNotFoundException;
 import com.healthCare.model.Users;
@@ -13,31 +14,28 @@ import com.healthCare.security.StringEncrypter;
 @Service
 public class IUserServiceImpl implements IUserService {
 	@Autowired
-	private UserRepository userRep;
+	private IUserRepository userRep;
 	@Override
 	public Users validateUser(String username, String password) {
-		StringEncrypter encrypt=new StringEncrypter();
-		List<Users> list = userRep.findAll();
-		for(Users u:list) {
-			if(u.getUsername().equals(username)) {
-				String decryptedpass=encrypt.decrypt(u.getPassword());
-				if(decryptedpass.equals(password)) {
-					return u;
-				}
-			}
-		}
+
+		Users user = userRep.validateUsers(username, password);
+		if(user==null) {
 		throw new UsernameNotFoundException("User Not Found");
+		}
+		
+		return user;
 	}
 
 	@Override
 	public Users addUser(Users user) {
-		Users u=userRep.save(user);
+		Users u=userRep.addUsers(user);
 		return u;
 	}
 
 	@Override
 	public Users removeUser(Users user) {
-		userRep.delete(user);
+		Users u=userRep.removeUsers(user);
+		
 		return user;
 	}
 

@@ -43,9 +43,7 @@ public class UserController {
     }
     @DeleteMapping("/deleteUser")
     public ResponseEntity<String> removeUser(@RequestBody Users user){
-    	StringEncrypter encrypt=new StringEncrypter();
-		String dcpPass=encrypt.decrypt(user.getPassword());
-		user.setPassword(dcpPass);
+		
 		userService.removeUser(user);
 		return new ResponseEntity<String>("Removed",HttpStatus.OK);
     }
