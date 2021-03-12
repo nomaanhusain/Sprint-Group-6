@@ -34,9 +34,10 @@ public class ITestResultServiceImpl implements ITestResultService {
 	}
 
 	@Override
-	public Set<TestResult> viewResultsByPatient(Patient patient) {
-		Set<TestResult> set=testRep.viewResultsByPatient(patient);
+	public Set<TestResult> viewResultsByPatientId(int patientId) {
+		Set<TestResult> set=testRep.viewResultsByPatientId(patientId);
 		return set;
 	}
+	
 
 }
