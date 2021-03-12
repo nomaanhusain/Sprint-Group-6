@@ -32,7 +32,7 @@ public class IDiagnosticCenterRepository {
 		return diag;
 	}
 
-//need a check
+//need a check,not sure of logic
 	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
 		// TODO Auto-generated method stub
 		DiagnosticTest view_test=diagCenterDao.viewTestDetails(diagnosticCenterId,testName);
@@ -51,13 +51,13 @@ public class IDiagnosticCenterRepository {
 		Optional<DiagnosticCenter> optional=diagCenterDao.findByName(centername);
 		DiagnosticCenter centerName=optional.orElseThrow(()->new CenterNotFoundException("Center Not Exists"));
 		return centerName;
-		
-	}
-// need a check
-	public void removeDiagnosticCenter(int id) {
-	   DiagnosticCenter centerId= diagCenterDao.findById(id).get();
-	     diagCenterDao.delete(centerId);
 
+	}
+
+	public DiagnosticCenter removeDiagnosticCenter(int id) {
+	   DiagnosticCenter centerId= diagCenterDao.removeDiagnosticCenter(id);
+	return centerId;
+	    
 	}
 
 	
@@ -67,7 +67,7 @@ public class IDiagnosticCenterRepository {
 		
 		
 	}
-
+//need a check
 	public List<Appointment> findAllCenter(String centerName) {
 		// TODO Auto-generated method stub
 		return diagCenterDao.findAllCenter(centerName);
