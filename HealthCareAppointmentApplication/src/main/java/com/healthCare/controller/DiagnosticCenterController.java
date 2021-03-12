@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.healthCare.model.Appointment;
 import com.healthCare.model.DiagnosticCenter;
 import com.healthCare.model.DiagnosticTest;
+import com.healthCare.model.TestResult;
 import com.healthCare.service.IDiagnosticCenter;
 
 
@@ -27,14 +28,17 @@ public class DiagnosticCenterController {
 	@Autowired
 	private IDiagnosticCenter icenter;
 	
+	
+	//******************completed******************************************************************************
 	// to get list of all Diagnostic Center
 	@GetMapping("/Centers")
 	public List<DiagnosticCenter> getAllDiagnosticCenters()
 	{
-		
-		return icenter.getAllDiagnosticCenters();
+		 List<DiagnosticCenter> list= icenter.getAllDiagnosticCenters();
+		 return list;
 	}
 	
+	//******************completed**********************************************************************************
 	//to add Diagnostic Center
 		@PostMapping("/Centers")
 		public ResponseEntity<DiagnosticCenter> addDiagnosticCenter(@RequestBody DiagnosticCenter diagnosticCenter) {
@@ -53,13 +57,17 @@ public class DiagnosticCenterController {
 			return new ResponseEntity<DiagnosticCenter>(centerId,HttpStatus.OK);
 		}
 		
+		
+		
+		//*********************completed****************************************************************************
 		//to update Diagnostic Center
-		@PutMapping("/Centers")
+		@PutMapping("/UpdateCenters")
 		public ResponseEntity<DiagnosticCenter> updateDiagnosticCenter(@RequestBody DiagnosticCenter diagnosticcenter) {
 			DiagnosticCenter updateCenter = icenter.updateDiagnosticCenter(diagnosticcenter);
 			return new ResponseEntity<DiagnosticCenter>(updateCenter, HttpStatus.OK);
 		}
-		
+
+	
 		//to view test Details
 		@GetMapping("/viewTest/{diagnosticCenterId},{testName}")
 		public ResponseEntity<DiagnosticTest>viewTestDetails (@PathVariable int diagnosticCenterId,String testName){
@@ -67,14 +75,15 @@ public class DiagnosticCenterController {
 			return  new ResponseEntity<DiagnosticTest>(viewTest,HttpStatus.OK);
 		}
 		
-		//***************************************need a check*******************
-		//to add test 
-		@PostMapping("/addTest/{diagnosticCenterId},{testId}")
-		public ResponseEntity<DiagnosticTest>addTest (@RequestBody int diagnosticCenterId,int testId){
-			DiagnosticTest test = icenter.addTest(diagnosticCenterId,testId);
-			return new ResponseEntity<DiagnosticTest>(test, HttpStatus.ACCEPTED);
-			
-		}
+	
+//		//to add test 
+//		@PostMapping("/addTest/{diagnosticCenterId},{testId}")
+//		public ResponseEntity<String>addTest (@RequestBody int diagnosticCenterId,@PathVariable int testId){
+//			DiagnosticTest test = icenter.addTest(diagnosticCenterId,testId);
+//			return new ResponseEntity<String>("Test With ID :" + testId + " added Successfully", HttpStatus.CREATED);
+//			
+//		}
+		
 		
 		
 		//to get Diagnostic Center by name
@@ -86,19 +95,24 @@ public class DiagnosticCenterController {
 			return new ResponseEntity<DiagnosticCenter>(centerName,HttpStatus.OK);
 		}
         
+        
+       
 		//to delete Diagnostic Center of particular id
-		@DeleteMapping(value = "/delete/{id}")
-		public ResponseEntity<DiagnosticCenter> removeDiagnosticCenter(@PathVariable Integer id)
+		//************************************completed**********************************************
+		@DeleteMapping(value =  "/removeCenter/{id}")
+		public ResponseEntity<String> removeDiagnosticCenter(@PathVariable Integer id)
 		{
 			icenter.removeDiagnosticCenter(id);
-			return new ResponseEntity<DiagnosticCenter>(HttpStatus.OK);
+			return new ResponseEntity<String>("Diagnostic Center With ID :" + id + " Deleted Successfully", HttpStatus.OK);
 		}
 		
+		
+		//******************************checked**************************************************
 		//to get list of appointments
-		@GetMapping("/ListOfAppointments/{centerName}")
-		public List<Appointment> getListOfAppointments(@PathVariable String centerName) {
+		@GetMapping("/listOfAppointments/{centerName}")
+		public ResponseEntity<List<Appointment>>getListOfAppointments(@PathVariable String centerName) {
 			List<Appointment> list = icenter.getListOfAppointments(centerName);
-			return list;
+			return  new ResponseEntity<List<Appointment>>(list,HttpStatus.OK);
 		}
 		
 		

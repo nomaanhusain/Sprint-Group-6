@@ -3,12 +3,7 @@ package com.healthCare.exception;
 
 public class CenterNotFoundException extends RuntimeException {
 	
-	
 
-
-		/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 

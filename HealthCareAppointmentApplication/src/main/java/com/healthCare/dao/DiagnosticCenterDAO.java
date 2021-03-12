@@ -13,21 +13,18 @@ import com.healthCare.model.DiagnosticTest;
 @Repository
 public interface DiagnosticCenterDAO extends JpaRepository<DiagnosticCenter,Integer> {
 
-	Optional<DiagnosticCenter> findByName(String centername);
+	public Optional<DiagnosticCenter> findByName(String centername);
 
-	DiagnosticCenter removeDiagnosticCenter(int id);
+	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName);
 
-	List<Appointment> getListOfAppointments(String centerName);
-
-	DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName);
-
-	DiagnosticTest addTest(int diagnosticcenterId, int testId);
-
-	List<Appointment> findAllCenter(String centerName);
+	public DiagnosticTest addTest(int diagnosticcenterId, int testId);
 
 	
-
 	
+
+
+
+
 } 
 
 
