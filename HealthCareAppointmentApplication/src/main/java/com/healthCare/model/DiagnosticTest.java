@@ -31,8 +31,8 @@ public class DiagnosticTest {
 	private String units;
 
 	
-	@OneToMany(fetch=FetchType.EAGER,targetEntity = DiagnosticTest.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "test_id", referencedColumnName = "test_id")
+	@OneToMany(fetch=FetchType.EAGER,targetEntity = DiagnosticCenter.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "test_id", referencedColumnName = "testId")
 	private Set<DiagnosticCenter> diagnosticCenter;
 	
 	
