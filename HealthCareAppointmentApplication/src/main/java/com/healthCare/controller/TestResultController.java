@@ -44,9 +44,9 @@ public class TestResultController {
 		return new ResponseEntity<String>("Record Removed", HttpStatus.OK);
 	}
 
-	@GetMapping("/viewresultbypatient")
-	public ResponseEntity<Set<TestResult>> viewResultByPatient(@RequestBody Patient patient) {
-		Set<TestResult> set = testResultService.viewResultsByPatient(patient);
+	@GetMapping("/viewResultByPatientId/{patientId}")
+	public ResponseEntity<Set<TestResult>> viewResultByPatient(@PathVariable int patientId) {
+		Set<TestResult> set = testResultService.viewResultsByPatientId(patientId);
 		return new ResponseEntity<Set<TestResult>>(set, HttpStatus.OK);
 	}
 }
