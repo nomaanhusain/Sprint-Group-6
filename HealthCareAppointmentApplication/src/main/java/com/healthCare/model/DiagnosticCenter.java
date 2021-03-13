@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import io.swagger.annotations.ApiModelProperty;
 
 
 @Entity
@@ -28,16 +29,21 @@ public class DiagnosticCenter {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //primary key generation automatically according to database.
 
 	private int centerId;
+	@ApiModelProperty(notes = "Center Name")
 	private String name;
+	@ApiModelProperty(notes = "Center's Contact Number")
 	private String contactNo;
+	@ApiModelProperty(notes = "Center's Address")
 	private String address;
+	@ApiModelProperty(notes = "Center's Email Address")
 	private String contactEmail;
 	
 	@ElementCollection(targetClass=String.class)
 	private List<String> servicesOffered;
-
+	
+	@ApiModelProperty(notes = "Relation to Diagnostic Test")
 	@OneToMany(fetch=FetchType.EAGER,targetEntity = DiagnosticTest.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "center_id", referencedColumnName = "center_id")
+	@JoinColumn(name = "center_id", referencedColumnName = "centerId")
 	private Set<DiagnosticTest> tests;
 
 
