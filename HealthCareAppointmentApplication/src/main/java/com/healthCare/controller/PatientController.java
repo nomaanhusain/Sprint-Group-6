@@ -18,7 +18,7 @@ import com.healthCare.model.TestResult;
 import com.healthCare.service.IPatientServiceImpl;
 
 @RestController
-@RequestMapping(value = "/hcpc")	//hcac = health care patient controller
+@RequestMapping(value = "/hcpc")	//hcpc = health care patient controller
 public class PatientController {
 
 	@Autowired

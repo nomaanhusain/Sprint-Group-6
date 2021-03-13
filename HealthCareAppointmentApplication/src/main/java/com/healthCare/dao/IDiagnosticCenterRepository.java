@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.healthCare.exception.CenterNotFoundException;
-
+import com.healthCare.exception.PatientNotFoundException;
+import com.healthCare.exception.TestNotFoundException;
 import com.healthCare.model.Appointment;
 import com.healthCare.model.DiagnosticCenter;
 import com.healthCare.model.DiagnosticTest;
+import com.healthCare.model.Patient;
 import com.healthCare.model.TestResult;
 
 @Repository
@@ -44,16 +46,16 @@ public class IDiagnosticCenterRepository {
 		return updateCenter;
 	}
 
-//need a check,not sure of logic
+//corrected
 	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
-		// TODO Auto-generated method stub
-		DiagnosticTest view_test=diagCenterDao.viewTestDetails(diagnosticCenterId,testName);
-		return view_test;
+		Optional<DiagnosticTest> option=diagCenterDao.findByTestDetails(diagnosticCenterId,testName);
+		DiagnosticTest emp=option.orElseThrow(()->new TestNotFoundException("Test Not Exists"));
+		return emp;
 	}
 
 	//need a check
 	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
-		DiagnosticTest diag_test = diagCenterDao.addTest(diagnosticcenterId,testId);
+		DiagnosticTest diag_test = diagCenterDao.saveByCenterId(diagnosticcenterId,testId);	
 		return diag_test;
 	
 	}
