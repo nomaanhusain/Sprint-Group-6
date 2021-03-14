@@ -3,14 +3,12 @@ package com.healthCare.service;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.healthCare.dao.IDiagnosticCenterRepository;
-import com.healthCare.model.Appointment;
 import com.healthCare.model.DiagnosticCenter;
 import com.healthCare.model.DiagnosticTest;
 
@@ -85,12 +83,4 @@ public class IDiagnosticCenterServiceImpl implements IDiagnosticCenter {
 		log.info("Center Removed");
 		return centerId;
 	}
-
-	@Override
-	public List<Appointment> getListOfAppointments(String centerName) {
-		return centerDao.getListOfAppointments(centerName);
-
-	}
-
-
 }

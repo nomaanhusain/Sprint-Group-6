@@ -1,6 +1,6 @@
 package com.healthCare.dao;
 
-import java.util.HashSet;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -9,13 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.healthCare.exception.CenterNotFoundException;
-import com.healthCare.exception.PatientNotFoundException;
-import com.healthCare.exception.TestNotFoundException;
-import com.healthCare.model.Appointment;
 import com.healthCare.model.DiagnosticCenter;
 import com.healthCare.model.DiagnosticTest;
-import com.healthCare.model.Patient;
-import com.healthCare.model.TestResult;
+
 
 @Repository
 public class IDiagnosticCenterRepository {
@@ -23,25 +19,25 @@ public class IDiagnosticCenterRepository {
 	private DiagnosticCenterDAO diagCenterDao;
 	@Autowired
 	private DiagnosticTestDAO diagTestDao;
-	
+
 	public List<DiagnosticCenter> getAllDiagnosticCenter() {
 		List<DiagnosticCenter> centerList = diagCenterDao.findAll();
 		return centerList;
 	}
-	
+
 
 	public DiagnosticCenter addDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
 		DiagnosticCenter diag = diagCenterDao.save(diagnosticCenter);
 		return diag;
 	}
-	
+
 
 	public DiagnosticCenter getDiagnosticCenterById(int diagnosticCenterId) {
 		Optional<DiagnosticCenter> optional=diagCenterDao.findById(diagnosticCenterId);
 		DiagnosticCenter diag=optional.orElseThrow(()->new CenterNotFoundException("Center Not Exists"));
 		return diag;
 	}
-	
+
 	public DiagnosticCenter updateDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
 		DiagnosticCenter updateCenter = diagCenterDao.save(diagnosticCenter);
 		return updateCenter;
@@ -71,7 +67,7 @@ public class IDiagnosticCenterRepository {
 		dc.setTests(set);
 		diagCenterDao.save(dc);
 		return dt;
-		
+
 	}
 
 	public DiagnosticCenter getDiagnosticCenter(String centername) {
@@ -82,22 +78,14 @@ public class IDiagnosticCenterRepository {
 	}
 
 	public DiagnosticCenter removeDiagnosticCenter(int id) {
-
 		Optional<DiagnosticCenter> op=diagCenterDao.findById(id);
-
 		DiagnosticCenter dc= (DiagnosticCenter) op.orElseThrow(()-> new CenterNotFoundException("Center Does Not Exists"));
 		diagCenterDao.delete(dc);
 		return dc;
 
 	}
-//left
-		public List<Appointment> getListOfAppointments(String centerName) {
-		// TODO Auto-generated method stub
-		return null;
-				
-		
-		
-	}
+
+}
 
 
 		
@@ -108,4 +96,4 @@ public class IDiagnosticCenterRepository {
 
 
 	
-	}
+	
