@@ -72,12 +72,12 @@ public class IDiagnosticCenterServiceImpl implements IDiagnosticCenter {
 //		return view_test;
 //	}
 
-//	@Override
-//	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
-//		DiagnosticTest diag_test = centerDao.addTest(diagnosticcenterId,testId);
-//		log.info("Test Added");
-//		return diag_test;
-//	}
+	@Override
+	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
+		DiagnosticTest diag_test = centerDao.addTest(diagnosticcenterId,testId);
+		log.info("Test Added");
+	return diag_test;
+	}
 
 	@Override
 	public DiagnosticCenter getDiagnosticCenter(String centername) {

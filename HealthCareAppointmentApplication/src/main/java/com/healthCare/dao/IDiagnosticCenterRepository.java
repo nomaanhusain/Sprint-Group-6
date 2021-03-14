@@ -2,6 +2,7 @@ package com.healthCare.dao;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,20 +20,20 @@ import com.healthCare.model.TestResult;
 public class IDiagnosticCenterRepository {
 	@Autowired
 	private DiagnosticCenterDAO diagCenterDao;
-	//*****************************************************checked************************************************************
+	@Autowired
+	private DiagnosticTestDAO diagTestDao;
+	
 	public List<DiagnosticCenter> getAllDiagnosticCenter() {
 		List<DiagnosticCenter> centerList = diagCenterDao.findAll();
 		return centerList;
 	}
 	
-//checked*************************************************************************************************************
+
 	public DiagnosticCenter addDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
 		DiagnosticCenter diag = diagCenterDao.save(diagnosticCenter);
 		return diag;
 	}
 	
-
-	//checked
 
 	public DiagnosticCenter getDiagnosticCenterById(int diagnosticCenterId) {
 		Optional<DiagnosticCenter> optional=diagCenterDao.findById(diagnosticCenterId);
@@ -40,7 +41,6 @@ public class IDiagnosticCenterRepository {
 		return diag;
 	}
 	
-//checked
 	public DiagnosticCenter updateDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
 		DiagnosticCenter updateCenter = diagCenterDao.save(diagnosticCenter);
 		return updateCenter;
@@ -53,21 +53,38 @@ public class IDiagnosticCenterRepository {
 //		return emp;
 //	}
 
-	//need a check
-//	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
-//		DiagnosticTest diag_test = diagCenterDao.findById(diagnosticcenterId,testId);	
-//		return diag_test;
-//	
+//	public DiagnosticTest viewTestDetails(int diagnosticCenterId,String testName) {
+//		Optional<DiagnosticCenter> optionalDc=diagCenterDao.findById(diagnosticCenterId);
+//		Optional<DiagnosticTest> optionalDt=diagTestDao.findByName(testName);
+//		DiagnosticCenter dc=optionalDc.get();
+//		DiagnosticTest dt=optionalDt.get();
+//		Set<DiagnosticTest> set=dc.getTests();
+//		set.add(dt);
+//		dc.setTests(set);
+//		diagCenterDao.save(dc);
+//		return dt;
 //	}
 
-	//--checked
+	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
+		Optional<DiagnosticCenter> optionalDc=diagCenterDao.findById(diagnosticcenterId);
+		Optional<DiagnosticTest> optionalDt=diagTestDao.findById(testId);
+		DiagnosticCenter dc=optionalDc.get();
+		DiagnosticTest dt=optionalDt.get();
+		Set<DiagnosticTest> set=dc.getTests();
+		set.add(dt);
+		dc.setTests(set);
+		diagCenterDao.save(dc);
+		return dt;
+		
+	}
+
 	public DiagnosticCenter getDiagnosticCenter(String centername) {
 		Optional<DiagnosticCenter> optional=diagCenterDao.findByName(centername);
 		DiagnosticCenter centerName=optional.orElseThrow(()->new CenterNotFoundException("Center Not Exists"));
 		return centerName;
 
 	}
-//**********************************************************************************************************checked******************************************************
+
 	public DiagnosticCenter removeDiagnosticCenter(int id) {
 
 		Optional<DiagnosticCenter> op=diagCenterDao.findById(id);
@@ -78,8 +95,7 @@ public class IDiagnosticCenterRepository {
 
 	}
 
-	
-	public List<Appointment> getListOfAppointments(String centerName) {
+		public List<Appointment> getListOfAppointments(String centerName) {
 		// TODO Auto-generated method stub
 		return null;
 				//diagCenterDao.getListOfAppointments(centerName);
