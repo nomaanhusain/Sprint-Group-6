@@ -17,15 +17,18 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/login")
-@Api(value = "Login", tags = { "Login" },description = "Controller for Login")
+@Api(value = "Login", tags = { "Login" }, description = "Controller for Login")
 public class LoginController {
 	@Autowired
 	private ILoginService loginService;
 	private boolean loginStatus = false;
 
 	@GetMapping(value = "/loginuser")
-	 @ApiOperation(value = "To Login a user")
+	@ApiOperation(value = "To Login a user")
 	public ResponseEntity<String> validateLogin(@RequestBody Users user) {
+		if (loginStatus) {
+			return new ResponseEntity<String>("Already Logged In", HttpStatus.CONFLICT);
+		}
 		Users user1 = loginService.login(user);
 
 		if (user1 != null) {
@@ -39,10 +42,10 @@ public class LoginController {
 	@GetMapping("/logout")
 	@ApiOperation(value = "To Logout a user")
 	public ResponseEntity<String> logout(@RequestBody Users user) {
-		Users u=loginService.logout(user);
+		Users u = loginService.logout(user);
 		if (loginStatus) {
 			loginStatus = false;
-			return new ResponseEntity<String>("Logged Out User "+u.getUsername(), HttpStatus.OK);
+			return new ResponseEntity<String>("Logged Out User " + u.getUsername(), HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("Please Login First", HttpStatus.OK);
 	}

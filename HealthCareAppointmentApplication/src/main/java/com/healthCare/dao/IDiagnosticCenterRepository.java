@@ -48,6 +48,7 @@ public class IDiagnosticCenterRepository {
 	}
 
 
+
 	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
 		Optional<DiagnosticCenter> option=diagCenterDao.findById(diagnosticCenterId);
 		DiagnosticCenter dc=option.get();
