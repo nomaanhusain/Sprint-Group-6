@@ -8,5 +8,5 @@ import com.healthCare.model.Patient;
 import com.healthCare.model.TestResult;
 
 public interface TestResultDAO extends JpaRepository<TestResult, Integer>{
-	public Set<TestResult> findAllByAppointment(int appointmentId);
+	//public Set<TestResult> findAllByAppointment(int appointmentId);
 }
