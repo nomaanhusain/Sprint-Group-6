@@ -22,7 +22,7 @@ public class IUserServiceImpl implements IUserService {
 	static private PatternLayout patternLayout;
 	private static FileAppender fileAppender;
 	static {
-		patternLayout = new PatternLayout("%d ## %M ##* %p ##* %m ## %L ");
+		patternLayout = new PatternLayout("%d ## %M ##* %p ##* %m ## %L %n");
 		try {
 			fileAppender = new FileAppender(patternLayout, "mylogs.log");
 		} catch (IOException e) {
@@ -31,6 +31,8 @@ public class IUserServiceImpl implements IUserService {
 		}
 		log.addAppender(fileAppender);
 	}
+	
+	
 	@Autowired
 	private IUserRepository userRep;
 

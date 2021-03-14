@@ -20,19 +20,8 @@ public class ILoginServiceImpl implements ILoginService {
 	
 	
 	
-	static Logger log = Logger.getLogger(ILoginServiceImpl.class);
-	static private PatternLayout patternLayout;
-	private static FileAppender fileAppender;
-	static {
-		patternLayout = new PatternLayout("%d ## %M ##* %p ##* %m ## %L ");
-		try {
-			fileAppender = new FileAppender(patternLayout, "mylogs.log");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		log.addAppender(fileAppender);
-	}
+	private static Logger log = Logger.getLogger(ILoginServiceImpl.class);
+	
 	
 	
 	

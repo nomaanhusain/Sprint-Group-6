@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.healthCare.exception.UsernameAlreadyExistsException;
 import com.healthCare.exception.UsernameNotFoundException;
 import com.healthCare.model.Users;
 import com.healthCare.security.StringEncrypter;
@@ -36,6 +37,12 @@ public class IUserRepository {
 		StringEncrypter encrypt = new StringEncrypter();
 		String encPass = encrypt.encrypt(user.getPassword());
 		user.setPassword(encPass);
+		List<Users> userList = usersRepo.findAll();
+		for(Users list:userList) {
+			if(list.getUsername().equals(user.getUsername())) {
+				throw new UsernameAlreadyExistsException("This is username is already used");
+			}
+		}
 		Users u = usersRepo.save(user);
 		return user;
 	}

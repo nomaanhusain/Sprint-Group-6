@@ -31,7 +31,7 @@ import com.healthCare.dao.UserRepository;
 
 @Controller
 @RequestMapping(value = "/hcr")
-@Api(value = "User", tags = { "User" })
+@Api(value = "User", tags = { "User" },description = "Controller for User")
 public class UserController {
     @Autowired
     private IUserService userService;

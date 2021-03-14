@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/login")
-@Api(value = "Login", tags = { "Login" })
+@Api(value = "Login", tags = { "Login" },description = "Controller for Login")
 public class LoginController {
 	@Autowired
 	private ILoginService loginService;

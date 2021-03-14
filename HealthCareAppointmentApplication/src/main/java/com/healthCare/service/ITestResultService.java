@@ -12,5 +12,5 @@ public interface ITestResultService {
 
 	public TestResult removeTestResult(int id);
 
-	public Set<TestResult> viewResultsByPatientId(int patientId);
+	public Set<TestResult> viewResultsByPatient(Patient patient);
 }

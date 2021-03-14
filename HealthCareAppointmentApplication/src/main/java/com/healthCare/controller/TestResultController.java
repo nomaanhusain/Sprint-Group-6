@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiOperation;
 @Controller
 @RestController
 @RequestMapping("/hctrc")
-@Api(value = "Test Result", tags = { "Test Result" })
+@Api(value = "Test Result", tags = { "Test Result" },description = "Controller for Test Result")
 public class TestResultController {
 	@Autowired
 	private ITestResultService testResultService;
@@ -52,10 +52,10 @@ public class TestResultController {
 		return new ResponseEntity<String>("Record Removed", HttpStatus.OK);
 	}
 
-	@GetMapping("/viewResultByPatientId/{patientId}")
+	@GetMapping("/viewResultByPatient")
 	@ApiOperation(value = "View results by Patient Id", response = TestResult.class)
-	public ResponseEntity<Set<TestResult>> viewResultByPatient(@PathVariable int patientId) {
-		Set<TestResult> set = testResultService.viewResultsByPatientId(patientId);
+	public ResponseEntity<Set<TestResult>> viewResultByPatient(@RequestBody Patient patient) {
+		Set<TestResult> set = testResultService.viewResultsByPatient(patient);
 		return new ResponseEntity<Set<TestResult>>(set, HttpStatus.OK);
 	}
 }

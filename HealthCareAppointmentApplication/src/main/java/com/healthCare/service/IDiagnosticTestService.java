@@ -1,6 +1,7 @@
 package com.healthCare.service;
 
 import java.util.List;
+import java.util.Set;
 
 import com.healthCare.model.DiagnosticTest;
 
@@ -9,7 +10,7 @@ public interface IDiagnosticTestService {
 
 	public DiagnosticTest addNewTest(DiagnosticTest test);
 
-	public List<DiagnosticTest> getTestsOfDiagnosticCenter(int centerId);
+	public Set<DiagnosticTest> getTestsOfDiagnosticCenter(int centerId);
 
 	public DiagnosticTest updateTestDetail(DiagnosticTest test);
 
