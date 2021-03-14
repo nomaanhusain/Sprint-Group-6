@@ -46,12 +46,18 @@ public class IDiagnosticCenterRepository {
 		return updateCenter;
 	}
 
-//corrected
-//	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
-//		Optional<DiagnosticTest> option=diagCenterDao.findByTestDetails(diagnosticCenterId,testName);
-//		DiagnosticTest emp=option.orElseThrow(()->new TestNotFoundException("Test Not Exists"));
-//		return emp;
-//	}
+
+	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
+	Optional<DiagnosticCenter> option=diagCenterDao.findById(diagnosticCenterId);
+	DiagnosticCenter dc=option.get();
+	Set<DiagnosticTest> set=dc.getTests();
+	for(DiagnosticTest test:set) {
+		if(test.getTestName().equals(testName)) {
+			return test;
+		}
+	}
+	return null;
+	}
 
 //	public DiagnosticTest viewTestDetails(int diagnosticCenterId,String testName) {
 //		Optional<DiagnosticCenter> optionalDc=diagCenterDao.findById(diagnosticCenterId);
