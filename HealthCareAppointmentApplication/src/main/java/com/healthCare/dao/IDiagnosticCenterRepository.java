@@ -1,5 +1,6 @@
 package com.healthCare.dao;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -47,29 +48,18 @@ public class IDiagnosticCenterRepository {
 	}
 
 
-	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
-	Optional<DiagnosticCenter> option=diagCenterDao.findById(diagnosticCenterId);
-	DiagnosticCenter dc=option.get();
-	Set<DiagnosticTest> set=dc.getTests();
-	for(DiagnosticTest test:set) {
-		if(test.getTestName().equals(testName)) {
-			return test;
-		}
-	}
-	return null;
-	}
 
-//	public DiagnosticTest viewTestDetails(int diagnosticCenterId,String testName) {
-//		Optional<DiagnosticCenter> optionalDc=diagCenterDao.findById(diagnosticCenterId);
-//		Optional<DiagnosticTest> optionalDt=diagTestDao.findByName(testName);
-//		DiagnosticCenter dc=optionalDc.get();
-//		DiagnosticTest dt=optionalDt.get();
-//		Set<DiagnosticTest> set=dc.getTests();
-//		set.add(dt);
-//		dc.setTests(set);
-//		diagCenterDao.save(dc);
-//		return dt;
-//	}
+	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
+		Optional<DiagnosticCenter> option=diagCenterDao.findById(diagnosticCenterId);
+		DiagnosticCenter dc=option.get();
+		Set<DiagnosticTest> set=dc.getTests();
+		for(DiagnosticTest test:set) {
+			if(test.getTestName().equals(testName)) {
+				return test;
+			}
+		}
+		return null;
+	}
 
 	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
 		Optional<DiagnosticCenter> optionalDc=diagCenterDao.findById(diagnosticcenterId);
@@ -100,14 +90,18 @@ public class IDiagnosticCenterRepository {
 		return dc;
 
 	}
-
+//left
 		public List<Appointment> getListOfAppointments(String centerName) {
 		// TODO Auto-generated method stub
 		return null;
-				//diagCenterDao.getListOfAppointments(centerName);
+				
 		
 		
 	}
+
+
+		
+
 
 	
 

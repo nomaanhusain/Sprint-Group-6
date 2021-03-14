@@ -17,5 +17,6 @@ public interface DiagnosticTestDAO extends JpaRepository<DiagnosticTest, Integer
 	//@Query("Select * from DiagnosticTest d where d.centerId=?1")
 	public Set<DiagnosticTest> findAllByDiagnosticCenter(DiagnosticCenter center);
 	public DiagnosticTest deleteByDiagnosticCenter(DiagnosticCenter center);
+	public Optional<DiagnosticTest> findByTestName(String testName);
 
 }
