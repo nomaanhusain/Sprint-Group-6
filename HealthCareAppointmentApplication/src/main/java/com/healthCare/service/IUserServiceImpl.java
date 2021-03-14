@@ -35,7 +35,8 @@ public class IUserServiceImpl implements IUserService {
 	
 	@Autowired
 	private IUserRepository userRep;
-
+	
+	//Validate if a user exists
 	@Override
 	public Users validateUser(String username, String password) {
 
@@ -47,14 +48,14 @@ public class IUserServiceImpl implements IUserService {
 
 		return user;
 	}
-
+	//Add a new user
 	@Override
 	public Users addUser(Users user) {
 		Users u = userRep.addUsers(user);
 		log.info("User Added");
 		return u;
 	}
-
+	//Remove a User
 	@Override
 	public Users removeUser(Users user) {
 		Users u = userRep.removeUsers(user);

@@ -12,19 +12,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity //Specifies that class is a entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class TestResult {
 	@Id
 	@GeneratedValue
+	//Primary Key for Test Result
 	private int testResultId;
+	//Property of Test Result
 	@ApiModelProperty(notes = "Test Reading")
 	private double testReading;
+	//Property of Test Result
 	@ApiModelProperty(notes = "Condition")
 	private String condition;
-	@ApiModelProperty(notes = "Appointment Object")
+	
+	//Many to one relation with appointment
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="appointment_id", referencedColumnName = "appointment_id")
 	private Appointment appointment;

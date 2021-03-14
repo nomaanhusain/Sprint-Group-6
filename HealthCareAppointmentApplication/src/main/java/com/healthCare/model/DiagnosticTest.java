@@ -23,30 +23,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
+@Entity //Specifies that class is a entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class DiagnosticTest  {
 	@Id
 	@GeneratedValue
+	//Primary Key for Diagnostic Test
 	private int testId;
-	@ApiModelProperty(notes = "Test Name")
+	//Property of Diagnostic Test
+	@ApiModelProperty(notes = "Test Name") 
 	private String testName;
+	//Property of Diagnostic Test
 	@ApiModelProperty(notes = "Test Price")
 	private double testPrice;
+	//Property of Diagnostic Test
 	@ApiModelProperty(notes = "Normal Value of Test")
 	private String normalValue;
+	//Property of Diagnostic Test
 	@ApiModelProperty(notes = "Unit of Measurement")
 	private String units;
-
-	
-	//@ManyToOne(fetch=FetchType.EAGER,targetEntity = DiagnosticCenter.class, cascade = CascadeType.ALL)
-	//@JoinColumn(name = "testId", referencedColumnName = "testId")
-	//@ElementCollection(targetClass = DiagnosticCenter.class)
-	//@ManyToMany(fetch=FetchType.EAGER,targetEntity = DiagnosticCenter.class, cascade = CascadeType.ALL)
-	//@JoinColumn(name = "testId", referencedColumnName = "testId")
-	//private Set<DiagnosticCenter> diagnosticCenter;
-	
+	//Many to Many Relation with diagnostic center
 	@ManyToMany(cascade = CascadeType.ALL,targetEntity = DiagnosticCenter.class,fetch = FetchType.EAGER)
 	@JoinColumn(name = "testId", referencedColumnName = "testId")
 	private Set<DiagnosticCenter> diagnosticCenter;

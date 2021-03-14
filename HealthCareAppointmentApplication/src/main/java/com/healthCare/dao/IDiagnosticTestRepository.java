@@ -21,7 +21,7 @@ import com.healthCare.model.DiagnosticTest;
 public class IDiagnosticTestRepository {
 	
 	
-	static Logger log = Logger.getLogger(IDiagnosticCenterRepository.class);
+	static Logger log = Logger.getLogger(IDiagnosticTestRepository.class);
 	static private PatternLayout patternLayout;
 	private static FileAppender fileAppender;
 	static {
