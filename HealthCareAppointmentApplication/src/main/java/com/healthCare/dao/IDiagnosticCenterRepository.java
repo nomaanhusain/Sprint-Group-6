@@ -89,7 +89,7 @@ public class IDiagnosticCenterRepository {
 		return dc;
 
 	}
-
+//left
 		public List<Appointment> getListOfAppointments(String centerName) {
 		// TODO Auto-generated method stub
 		return null;
