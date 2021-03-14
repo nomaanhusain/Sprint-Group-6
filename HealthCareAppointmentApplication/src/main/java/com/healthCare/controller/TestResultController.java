@@ -23,7 +23,7 @@ import com.healthCare.service.ITestResultService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Controller
+
 @RestController
 @RequestMapping("/hctrc")
 @Api(value = "Test Result", tags = { "Test Result" },description = "Controller for Test Result")

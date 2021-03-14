@@ -17,7 +17,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 
-@Controller
+
 @RestController
 @RequestMapping("/admin")
 @Api(value = "Admin", tags = { "Admin" }, description = "Controller for Admin")

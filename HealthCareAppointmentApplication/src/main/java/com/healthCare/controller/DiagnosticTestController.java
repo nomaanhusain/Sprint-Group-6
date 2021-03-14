@@ -24,7 +24,7 @@ import com.healthCare.service.IDiagnosticTestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Controller
+
 @RestController
 @RequestMapping("/hcdtc")
 @Api(value = "Dianostic Test", tags = { "Diagnostic Test" }, description = "Controller for Diagnostic Test")
