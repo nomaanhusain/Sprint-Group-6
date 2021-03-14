@@ -17,16 +17,16 @@ public class Users {
 	@Id
 	@GeneratedValue
 	//Primary Key for Users
-	public int usersId;
+	private int usersId;
 	//Property of Users
 	@ApiModelProperty(notes = "Username")
-	public String username;
+	private String username;
 	//Property of Users
 	@ApiModelProperty(notes = "password")
-	public String password;
+	private String password;
 	//Property of Users
 	@ApiModelProperty(notes = "role")
-	public String role;
+	private String role;
 	
 	
 }
