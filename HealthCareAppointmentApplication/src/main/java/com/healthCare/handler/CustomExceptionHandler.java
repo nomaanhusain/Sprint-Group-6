@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.healthCare.exception.CenterNotFoundException;
 import com.healthCare.exception.InvalidUsernameException;
 import com.healthCare.exception.TestNotFoundException;
+import com.healthCare.exception.TestResultNotFoundException;
+import com.healthCare.exception.UsernameAlreadyExistsException;
 import com.healthCare.exception.UsernameNotFoundException;
 
 @RestControllerAdvice
@@ -28,6 +30,16 @@ public class CustomExceptionHandler {
 	}
 	@ExceptionHandler(TestNotFoundException.class)
 	public ResponseEntity<String> handleTestNotFound(TestNotFoundException tnfe)
+	{
+		return new ResponseEntity<String>(tnfe.getMessage(),HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler(UsernameAlreadyExistsException.class)
+	public ResponseEntity<String> handleUsernameAlreadyExistsException(UsernameAlreadyExistsException tnfe)
+	{
+		return new ResponseEntity<String>(tnfe.getMessage(),HttpStatus.CONFLICT);
+	}
+	@ExceptionHandler(TestResultNotFoundException.class)
+	public ResponseEntity<String> handleTestResultNotFoundException(TestResultNotFoundException tnfe)
 	{
 		return new ResponseEntity<String>(tnfe.getMessage(),HttpStatus.NOT_FOUND);
 	}

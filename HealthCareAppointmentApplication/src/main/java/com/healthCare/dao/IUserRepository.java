@@ -50,7 +50,7 @@ public class IUserRepository {
 	public Users removeUsers(Users users) {
 		StringEncrypter encrypt = new StringEncrypter();
 		users.setPassword(encrypt.encrypt(users.getPassword()));
-		Optional<Users> u = usersRepo.findById(users.getUsersId());
+		Optional<Users> u = usersRepo.findByUsername(users.getUsername());
 		Users user = null;
 		try {
 			user = u.get();
