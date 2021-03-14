@@ -11,7 +11,7 @@ public interface IDiagnosticCenter {
 	public DiagnosticCenter addDiagnosticCenter(DiagnosticCenter diagnosticCenter);
 	public DiagnosticCenter getDiagnosticCenterById(int diagnosticCenterId);
 	public DiagnosticCenter updateDiagnosticCenter(DiagnosticCenter diagnosticCenter);
-//	public DiagnosticTest viewTestDetails(int diagnosticCenterId,String testName);
+	public DiagnosticTest viewTestDetails(int diagnosticCenterId,String testName);
 	public DiagnosticTest addTest(int diagnosticcenterId,int testId);
 	public DiagnosticCenter getDiagnosticCenter(String centername);
 	public DiagnosticCenter removeDiagnosticCenter(int id);

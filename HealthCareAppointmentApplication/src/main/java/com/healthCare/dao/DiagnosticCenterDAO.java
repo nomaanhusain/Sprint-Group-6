@@ -15,8 +15,7 @@ public interface DiagnosticCenterDAO extends JpaRepository<DiagnosticCenter,Inte
 
 	public Optional<DiagnosticCenter> findByName(String centername);
 
-	//public Optional<DiagnosticTest> findByTestDetails(int diagnosticCenterId, String testName);
-
+	
 
 
 

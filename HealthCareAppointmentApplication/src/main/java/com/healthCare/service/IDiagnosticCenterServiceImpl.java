@@ -2,21 +2,14 @@ package com.healthCare.service;
 
 
 import java.io.IOException;
-
 import java.util.List;
 import java.util.Optional;
-
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
-
 import com.healthCare.dao.IDiagnosticCenterRepository;
-import com.healthCare.exception.CenterNotFoundException;
 import com.healthCare.model.Appointment;
 import com.healthCare.model.DiagnosticCenter;
 import com.healthCare.model.DiagnosticTest;
@@ -66,11 +59,11 @@ public class IDiagnosticCenterServiceImpl implements IDiagnosticCenter {
 		return updateCenter;
 	}
 
-	//@Override
-//	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
-//		DiagnosticTest view_test=centerDao.viewTestDetails(diagnosticCenterId,testName);
-//		return view_test;
-//	}
+	@Override
+	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
+		DiagnosticTest view_test=centerDao.viewTestDetails(diagnosticCenterId,testName);
+		return view_test;
+	}
 
 	@Override
 	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {

@@ -83,17 +83,17 @@ public class DiagnosticCenterController {
 
 	//notWorking
 	//to view test Details
-	//		@GetMapping("/viewTest/{diagnosticCenterId},{testName}")
-	//		@ApiOperation(value = "View details of a test from a center", response = DiagnosticCenter.class)//check response
-	//		public ResponseEntity<DiagnosticTest>viewTestDetails (@PathVariable int diagnosticCenterId,String testName){
-	//			DiagnosticTest viewTest=icenter.viewTestDetails(diagnosticCenterId, testName);
-	//			return  new ResponseEntity<DiagnosticTest>(viewTest,HttpStatus.OK);
-	//		}
+			@GetMapping("/viewTest/{diagnosticCenterId}")
+			@ApiOperation(value = "View details of a test from a center", response = DiagnosticCenter.class)//check response
+			public ResponseEntity<DiagnosticTest>viewTestDetails (@PathVariable int diagnosticCenterId,@RequestBody String testName){
+				DiagnosticTest viewTest=icenter.viewTestDetails(diagnosticCenterId, testName);
+				return  new ResponseEntity<DiagnosticTest>(viewTest,HttpStatus.OK);
+			}
 
 
 	//to add test 
-	@PostMapping("/addTest/{diagnosticCenterId},{testId}")
-	public ResponseEntity<String>addTest (@RequestBody int diagnosticCenterId,@PathVariable int testId){
+	@PostMapping("/addTest/{diagnosticCenterId}")
+	public ResponseEntity<String>addTest (@PathVariable int diagnosticCenterId,@RequestBody int testId){
 		icenter.addTest(diagnosticCenterId,testId);
 		return new ResponseEntity<String>("Test With ID :" + testId + " added Successfully", HttpStatus.CREATED);
 
