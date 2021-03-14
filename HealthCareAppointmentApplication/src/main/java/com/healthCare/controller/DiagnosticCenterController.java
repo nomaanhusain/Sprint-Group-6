@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.healthCare.model.Appointment;
@@ -38,7 +40,6 @@ public class DiagnosticCenterController {
 	private IDiagnosticCenter icenter;
 	
 	
-	//******************completed******************************************************************************
 	// to get list of all Diagnostic Center
 	@GetMapping("/Centers")
 	
@@ -51,7 +52,7 @@ public class DiagnosticCenterController {
 		 return list;
 	}
 	
-	//******************completed**********************************************************************************
+	//working
 	//to add Diagnostic Center
 		@PostMapping("/Centers")
 		
@@ -63,6 +64,7 @@ public class DiagnosticCenterController {
 			
 		}
 		
+		//working
 		//to get Diagnostic Center of particular Id.
 		@GetMapping("/Centers/{diagnosticCenterId}")
 		
@@ -73,9 +75,8 @@ public class DiagnosticCenterController {
 			return new ResponseEntity<DiagnosticCenter>(centerId,HttpStatus.OK);
 		}
 		
-		
-		
-		//*********************completed****************************************************************************
+		//working
+			
 		//to update Diagnostic Center
 		@PutMapping("/UpdateCenters")
 		
@@ -87,14 +88,14 @@ public class DiagnosticCenterController {
 
 	
 		//to view test Details
-		@GetMapping("/viewTest/{diagnosticCenterId},{testName}")
-		@ApiOperation(value = "View details of a test from a center", response = DiagnosticCenter.class)//check response
-		public ResponseEntity<DiagnosticTest>viewTestDetails (@PathVariable int diagnosticCenterId,String testName){
-			DiagnosticTest viewTest=icenter.viewTestDetails(diagnosticCenterId, testName);
-			return  new ResponseEntity<DiagnosticTest>(viewTest,HttpStatus.OK);
-		}
+//		@GetMapping("/viewTest/{diagnosticCenterId},{testName}")
+//		@ApiOperation(value = "View details of a test from a center", response = DiagnosticCenter.class)//check response
+//		public ResponseEntity<DiagnosticTest>viewTestDetails (@PathVariable int diagnosticCenterId,String testName){
+//			DiagnosticTest viewTest=icenter.viewTestDetails(diagnosticCenterId, testName);
+//			return  new ResponseEntity<DiagnosticTest>(viewTest,HttpStatus.OK);
+//		}
 		
-	
+//	
 //		//to add test 
 //		@PostMapping("/addTest/{diagnosticCenterId},{testId}")
 //		public ResponseEntity<String>addTest (@RequestBody int diagnosticCenterId,@PathVariable int testId){
@@ -104,9 +105,9 @@ public class DiagnosticCenterController {
 //		}
 		
 		
-		
-		//to get Diagnostic Center by name
-        @GetMapping("/Centers/{centername}")
+//		
+//		//to get Diagnostic Center by name
+       @GetMapping("/Centername/{centername}")
 		
 		public ResponseEntity<DiagnosticCenter> getDiagnosticCenter(@PathVariable String centername)
 		{
@@ -114,10 +115,9 @@ public class DiagnosticCenterController {
 			return new ResponseEntity<DiagnosticCenter>(centerName,HttpStatus.OK);
 		}
         
-        
+        //working
        
 		//to delete Diagnostic Center of particular id
-		//************************************completed**********************************************
 		@DeleteMapping(value =  "/removeCenter/{id}")
 		@ApiOperation(value = "Remove a center", response = DiagnosticCenter.class)
 		public ResponseEntity<String> removeDiagnosticCenter(@PathVariable Integer id)
@@ -126,8 +126,8 @@ public class DiagnosticCenterController {
 			return new ResponseEntity<String>("Diagnostic Center With ID :" + id + " Deleted Successfully", HttpStatus.OK);
 		}
 		
+		//working
 		
-		//******************************checked**************************************************
 		//to get list of appointments
 		@GetMapping("/listOfAppointments/{centerName}")
 		@ApiOperation(value = "Get list of Appointments", response = DiagnosticCenter.class)//check response

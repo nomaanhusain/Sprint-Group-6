@@ -2,6 +2,7 @@ package com.healthCare.service;
 
 
 import java.io.IOException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -65,18 +66,18 @@ public class IDiagnosticCenterServiceImpl implements IDiagnosticCenter {
 		return updateCenter;
 	}
 
-	@Override
-	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
-		DiagnosticTest view_test=centerDao.viewTestDetails(diagnosticCenterId,testName);
-		return view_test;
-	}
+	//@Override
+//	public DiagnosticTest viewTestDetails(int diagnosticCenterId, String testName) {
+//		DiagnosticTest view_test=centerDao.viewTestDetails(diagnosticCenterId,testName);
+//		return view_test;
+//	}
 
-	@Override
-	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
-		DiagnosticTest diag_test = centerDao.addTest(diagnosticcenterId,testId);
-		log.info("Test Added");
-		return diag_test;
-	}
+//	@Override
+//	public DiagnosticTest addTest(int diagnosticcenterId, int testId) {
+//		DiagnosticTest diag_test = centerDao.addTest(diagnosticcenterId,testId);
+//		log.info("Test Added");
+//		return diag_test;
+//	}
 
 	@Override
 	public DiagnosticCenter getDiagnosticCenter(String centername) {
