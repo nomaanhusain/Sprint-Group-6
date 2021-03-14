@@ -13,8 +13,6 @@ public class IAdminRepository {
 	public void registerAdmin(String username, String password) {
 		Users user=new Users();
 		user.setUsername(username);
-		StringEncrypter enc=new StringEncrypter();
-		password=enc.encrypt(password);
 		user.setPassword(password);
 		user.setRole("Admin");
 		userRep.addUsers(user);
