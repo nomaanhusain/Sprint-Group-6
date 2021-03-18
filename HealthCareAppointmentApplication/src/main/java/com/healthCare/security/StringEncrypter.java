@@ -18,6 +18,7 @@ public class StringEncrypter {
 		}
 		return result.toString();
 	}
+	//Check MD5 Algorithm (AES256)
 
 	public static String decrypt(String cipherText) {
 		StringBuffer result = new StringBuffer();

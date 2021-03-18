@@ -62,6 +62,7 @@ public class IDiagnosticTestRepository {
 			throw new CenterNotFoundException("Center not found in Diagnostic Tests");
 		}
 		Set<DiagnosticTest> list = digTestDao.findAllByDiagnosticCenter(dc);
+		//Set<DiagnosticTest> list = dc.getTests();
 		return list;
 	}
 
