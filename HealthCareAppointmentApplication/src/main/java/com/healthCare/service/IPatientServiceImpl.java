@@ -1,6 +1,6 @@
 package com.healthCare.service;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,22 +31,17 @@ public class IPatientServiceImpl implements IPatientService {
 	}
 
 	@Override
-	public List<TestResult> getAllTestResult(String patientUserName) {
+	public Set<TestResult> getAllTestResult(String patientUserName) {
 		return prepository.getAllTestResult(patientUserName);
 	}
 
-	/*
-	 * @Override public TestResult viewTestResult(int testResultId) { return
-	 * prepository.viewTestResult(testResultId); }
-	 */
 	
-	@Override
-	public TestResult viewTestResult(int testResultId) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override 
+	public TestResult viewTestResult(int testResultId) 
+	{ 
+	    return prepository.viewTestResult(testResultId);
 	}
-	
-	
+	 
 	public Patient getPatientById(Integer pid) {
 		return prepository.getPatientById(pid);
 	}

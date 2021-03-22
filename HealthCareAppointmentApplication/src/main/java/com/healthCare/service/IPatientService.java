@@ -1,6 +1,6 @@
 package com.healthCare.service;
 
-import java.util.List;
+import java.util.Set;
 
 import com.healthCare.model.Patient;
 import com.healthCare.model.TestResult;
@@ -13,7 +13,7 @@ public interface IPatientService {
 	
 	public Patient viewPatient(String patientName);
 	
-	List<TestResult> getAllTestResult(String patientUserName);
+	Set<TestResult> getAllTestResult(String patientUserName);
 	
 	TestResult viewTestResult(int testResultId);
 	

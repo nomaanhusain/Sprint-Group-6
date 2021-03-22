@@ -1,6 +1,7 @@
 package com.healthCare.controller;
 
-import java.util.List;
+
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,12 @@ import com.healthCare.model.Patient;
 import com.healthCare.model.TestResult;
 import com.healthCare.service.IPatientServiceImpl;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/hcpc")	//hcpc = health care patient controller
+@Api(value = "Patient", tags = { "Patient" }, description = "Controller for Patient")
 public class PatientController {
 
 	@Autowired
@@ -27,6 +32,7 @@ public class PatientController {
 	
 	//working
 	@PostMapping(value = "/registerPatient")
+	@ApiOperation(value = "Add patient")
 	public ResponseEntity<String> registerPatient(@RequestBody Patient patient) {
 		Patient pati= pservice.registerPatient(patient);
 		return new ResponseEntity<String>("Patient with ID :" + pati.getPatientId()+ " created Successfully", HttpStatus.CREATED);
@@ -34,6 +40,7 @@ public class PatientController {
 	
 	//working
 	@PutMapping(value = "/updatePatient/{pid}")
+	@ApiOperation(value = "update the patient by patient id")
 	public ResponseEntity<Patient> updatePatient(@PathVariable int pid,@RequestBody Patient patient)
 	{
 		Patient patient1=pservice.getPatientById(pid);
@@ -47,23 +54,25 @@ public class PatientController {
 	
 	//working
 	@GetMapping(value="/viewPatient/{patientName}")
+	@ApiOperation(value = "Get patient by patient name")
 	public ResponseEntity<String> viewPatient(@PathVariable String patientName)
 	{
 		Patient patient=pservice.viewPatient(patientName);
-		return new ResponseEntity<String>("Patient id is: "+patient.getPatientId() +"\nPatient name: "+patient.getName()+"\nPatient Age: "+patient.getAge()+"\nPatient  gender: "+patient.getGender()+"\n Patient Phone No: "+patient.getPhoneNo(),HttpStatus.OK);
+		return new ResponseEntity<String>("Patient id is: "+patient.getPatientId() +"\nPatient name: "+patient.getName()+"\nPatient Age: "+patient.getAge()+"\nPatient  gender: "+patient.getGender()+"\nPatient Phone No: "+patient.getPhoneNo(),HttpStatus.OK);
 	}
-	
 	
 	//not working
 	@GetMapping(value="/getAllTestResult/{patientUserName}")
-	public ResponseEntity<List<TestResult>> getAllTestResult(@PathVariable String patientUserName)
+	@ApiOperation(value = "Get all test result by patient name")
+	public ResponseEntity<Set<TestResult>> getAllTestResult(@PathVariable String patientName)
 	{
-		List<TestResult> list=pservice.getAllTestResult(patientUserName);
-		return new ResponseEntity<List<TestResult>>(list,HttpStatus.OK);
+		Set<TestResult> set=pservice.getAllTestResult(patientName);
+		return new ResponseEntity<Set<TestResult>>(set,HttpStatus.OK);
 	}
 	
 	//not working
 	@GetMapping(value="/viewTestResult/{testResultId}")
+	@ApiOperation(value = "Get all test result by patient id")
 	public ResponseEntity<TestResult> viewTestResult(@PathVariable int testResultId)
 	{
 		TestResult result=pservice.viewTestResult(testResultId);
