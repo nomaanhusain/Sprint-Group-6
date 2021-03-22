@@ -23,10 +23,4 @@ public class TestAppointmentService {
 	@Autowired
 	private IAppointmentService appointmentService;
 	
-	public void testAddNewAppointment() {
-		Optional<Appointment> dt=Optional.ofNullable(new Appointment(1, "2021-03-23" , "False", null, null, null, null));
-		when(appointmentDao.save(dt.get())).thenReturn(dt.get());
-		when(appointmentDao.findById(dt.get().getAppointmentId())).thenReturn(dt);
-		assertEquals(dt.get().getAppointmentId(), appointmentService.addAppointment(dt.get()).getAppointmentId());
-	}
 }
