@@ -71,7 +71,6 @@ public class AppointmentController{
 		return new ResponseEntity<Appointment>(appointment,HttpStatus.OK);
 	}
 	
-
 	//working
 	@DeleteMapping(value = "/removeAppointment")
 	@ApiOperation(value = "delete appointment")
