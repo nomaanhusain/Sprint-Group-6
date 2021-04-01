@@ -62,5 +62,14 @@ public class IUserServiceImpl implements IUserService {
 		log.info("User Removed");
 		return user;
 	}
+	@Override
+	public List<Users> getAllUsers() {
+		return userRep.getAllUsers();
+	}
+	@Override
+	public boolean deleteUserById(int userId) {
+		// TODO Auto-generated method stub
+		return userRep.removeUserById(userId);
+	}
 
 }

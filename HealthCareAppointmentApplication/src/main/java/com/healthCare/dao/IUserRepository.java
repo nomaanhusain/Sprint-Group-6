@@ -46,7 +46,17 @@ public class IUserRepository {
 		Users u = usersRepo.save(user);
 		return user;
 	}
-
+	public boolean removeUserById(int userId) {
+		Optional<Users> u=usersRepo.findById(userId);
+		Users user = null;
+		try {
+			user = u.get();
+		} catch (NoSuchElementException e) {
+			throw new UsernameNotFoundException("User Not Found");
+		}
+		usersRepo.deleteById(userId);
+		return true;
+	}
 	public Users removeUsers(Users users) {
 		StringEncrypter encrypt = new StringEncrypter();
 		users.setPassword(encrypt.encrypt(users.getPassword()));
@@ -60,5 +70,8 @@ public class IUserRepository {
 
 		usersRepo.delete(user);
 		return user;
+	}
+	public List<Users> getAllUsers(){
+		return usersRepo.findAll();
 	}
 }
