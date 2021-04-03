@@ -13,10 +13,10 @@ import com.healthCare.model.*;
 public interface PatientDAO extends JpaRepository<Patient, Integer>
 {
 	
-	  @Query("SELECT p FROM Patient p WHERE p.name = ?1") 
+	  @Query("SELECT p FROM Patient p WHERE p.pname = ?1") 
 	  Optional<Patient> findByName(String patientName);
 	  
 
-		@Query("select p.patientId from Patient p where p.name=?1")
+		@Query("select p.patientId from Patient p where p.pname=?1")
 		Optional<Integer> findId(String patientName);
 }
