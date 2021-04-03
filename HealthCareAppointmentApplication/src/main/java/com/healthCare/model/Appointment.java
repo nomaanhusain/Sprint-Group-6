@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -36,6 +37,7 @@ public class Appointment {
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@ApiModelProperty(notes = "Appointment Date")
+	@NotEmpty(message = "Please provide avilable date")
 	private Date appointmentDate;
 	
 	@ApiModelProperty(notes = "Approval Status")

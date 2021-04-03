@@ -45,7 +45,7 @@ public class PatientController {
 	{
 		Patient patient1=pservice.getPatientById(pid);
 		patient1.setAge(patient.getAge());
-		patient1.setName(patient.getName());
+		patient1.setPname(patient.getPname());
 		patient1.setPhoneNo(patient.getPhoneNo());
 		patient1.setGender(patient.getGender());
 		pservice.registerPatient(patient1);
@@ -58,7 +58,7 @@ public class PatientController {
 	public ResponseEntity<String> viewPatient(@PathVariable String patientName)
 	{
 		Patient patient=pservice.viewPatient(patientName);
-		return new ResponseEntity<String>("Patient id is: "+patient.getPatientId() +"\nPatient name: "+patient.getName()+"\nPatient Age: "+patient.getAge()+"\nPatient  gender: "+patient.getGender()+"\nPatient Phone No: "+patient.getPhoneNo(),HttpStatus.OK);
+		return new ResponseEntity<String>("Patient id is: "+patient.getPatientId() +"\nPatient name: "+patient.getPname()+"\nPatient Age: "+patient.getAge()+"\nPatient  gender: "+patient.getGender()+"\nPatient Phone No: "+patient.getPhoneNo(),HttpStatus.OK);
 	}
 	
 	//not working
