@@ -1,6 +1,7 @@
 package com.healthCare.dao;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,5 +19,5 @@ public interface PatientDAO extends JpaRepository<Patient, Integer>
 	  
 
 		@Query("select p.patientId from Patient p where p.pname=?1")
-		Optional<Integer> findId(String patientName);
+		Optional<List<Integer>> findId(String patientName);
 }

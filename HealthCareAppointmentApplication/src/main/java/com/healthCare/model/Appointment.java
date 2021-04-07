@@ -35,13 +35,13 @@ public class Appointment {
 	@Column(name="appointment_id")
 	private int appointmentId;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	@ApiModelProperty(notes = "Appointment Date")
 	@NotEmpty(message = "Please provide avilable date")
 	private Date appointmentDate;
 	
 	@ApiModelProperty(notes = "Approval Status")
-	private boolean approvalStatus;
+	private String approvalStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "appointment_diagnostictest", joinColumns = { @JoinColumn(name = "appointment_id") }, inverseJoinColumns = { @JoinColumn(name = "test_id")})
@@ -62,4 +62,5 @@ public class Appointment {
 	@JoinTable(name = "Appointment_testresult", joinColumns = { @JoinColumn(name = "appointment_id") }, inverseJoinColumns = { @JoinColumn(name = "testresult_id")})
 	@ApiModelProperty(notes = "Relation with test result class")
 	private Set<TestResult> testResult;
+	
 }
