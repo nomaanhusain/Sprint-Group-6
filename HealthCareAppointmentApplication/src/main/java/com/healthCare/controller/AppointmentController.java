@@ -59,7 +59,7 @@ public class AppointmentController{
 	}
 	
 	@GetMapping(value="/getAppointmentList/{appointmentDate}/{approvalStatus}")
-	@ApiOperation(value = "Get all the appointment on bases of approval status")
+	@ApiOperation(value = "Get all the appointment on bases of Appointment Date and Approval Status")
 	public ResponseEntity<List<Appointment>> getAppointmentList(@PathVariable("appointmentDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date appointmentDate, @PathVariable String approvalStatus)
 	{
 		List<Appointment> appo=aservice.getAppointmentList(appointmentDate,approvalStatus);
