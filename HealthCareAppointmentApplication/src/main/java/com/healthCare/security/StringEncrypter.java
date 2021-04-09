@@ -37,7 +37,7 @@ public class StringEncrypter {
             byte[] encryptedText = cipher.doFinal(plainText);
             encryptedString = new String(Base64.encodeBase64(encryptedText));
         } catch (Exception e) {
-            e.printStackTrace();
+            
         }
         return encryptedString;
     }
@@ -50,7 +50,7 @@ public class StringEncrypter {
             byte[] plainText = cipher.doFinal(encryptedText);
             decryptedText= new String(plainText);
         } catch (Exception e) {
-            e.printStackTrace();
+            
         }
         return decryptedText;
     }
