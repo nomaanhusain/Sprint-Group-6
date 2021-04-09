@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.healthCare.model.Patient;
-import com.healthCare.model.TestResult;
 import com.healthCare.service.IPatientServiceImpl;
 
 import io.swagger.annotations.Api;
@@ -59,23 +58,5 @@ public class PatientController {
 	{
 		Patient patient=pservice.viewPatient(patientName);
 		return new ResponseEntity<String>("Patient id is: "+patient.getPatientId() +"\nPatient name: "+patient.getPname()+"\nPatient Age: "+patient.getAge()+"\nPatient  gender: "+patient.getGender()+"\nPatient Phone No: "+patient.getPhoneNo(),HttpStatus.OK);
-	}
-	
-	//not working
-	@GetMapping(value="/getAllTestResult/{patientUserName}")
-	@ApiOperation(value = "Get all test result by patient name")
-	public ResponseEntity<Set<TestResult>> getAllTestResult(@PathVariable String patientName)
-	{
-		Set<TestResult> set=pservice.getAllTestResult(patientName);
-		return new ResponseEntity<Set<TestResult>>(set,HttpStatus.OK);
-	}
-	
-	//not working
-	@GetMapping(value="/viewTestResult/{testResultId}")
-	@ApiOperation(value = "Get all test result by patient id")
-	public ResponseEntity<TestResult> viewTestResult(@PathVariable int testResultId)
-	{
-		TestResult result=pservice.viewTestResult(testResultId);
-		return new ResponseEntity<TestResult>(result,HttpStatus.OK);
 	}
 }

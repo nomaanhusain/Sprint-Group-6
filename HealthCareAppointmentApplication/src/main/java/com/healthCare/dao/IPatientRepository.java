@@ -1,9 +1,7 @@
 package com.healthCare.dao;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
@@ -12,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.healthCare.exception.PatientNotFoundException;
-import com.healthCare.model.Appointment;
 import com.healthCare.model.Patient;
-import com.healthCare.model.TestResult;
 
 @Repository
 public class IPatientRepository {
@@ -36,10 +32,6 @@ public class IPatientRepository {
 
 	@Autowired
 	private PatientDAO patient;
-
-	@Autowired 
-	private TestResultDAO testResult;
-	 
 	
 	public Patient registerPatient(Patient patient1) {
 		log.info("Patient added");
@@ -56,23 +48,6 @@ public class IPatientRepository {
 		Patient emp=optional.orElseThrow(()->new PatientNotFoundException("Patient Not Exists"));
 		return emp;
 		}
-	
-	//not complete
-	public Set<TestResult> getAllTestResult(String patientname) {
-		Set<TestResult> mergedSet = new HashSet<>();
-		Optional<Patient> optional=patient.findByName(patientname);
-		Set<Appointment> appointmentSet=optional.get().getAppointment();
-		for (Appointment app : appointmentSet) {
-			mergedSet.addAll(app.getTestResult());
-		}
-		return mergedSet;
-	}
-
-	
-	 public TestResult viewTestResult(int testResultId) { 
-			 Optional<TestResult> optional = testResult.findById(testResultId); 
-			 return optional.get();
-	 	}
 	 
 	public Patient getPatientById(Integer pid) {
 		Optional<Patient> optional=patient.findById(pid);

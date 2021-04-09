@@ -1,10 +1,11 @@
 package com.healthCare.dao;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
@@ -43,14 +44,21 @@ public class IAppointmentRepository {
 	}
 	
 	
-	public Set<Appointment> viewAppointments(String patientName) {
-		Optional<Integer> patientId=patient.findId(patientName);
-		Optional<Set<Appointment>> optional=appointment.findAppointmentByName(patientId.get());	
-		return optional.get();
+	public List<Appointment> viewAppointments(String patientName) {
+		List<Integer> patientId=patient.findId(patientName).get();
+		System.out.print(patientId);
+		List<Appointment> app=new ArrayList<Appointment>();
+		Iterator<Integer> it=patientId.iterator();
+		while(it.hasNext())
+		{
+			List<Appointment> a=appointment.findAppointmentByPid(it.next()).get();
+			app.add(a.get(1));	
+		}
+		return app;
 	}
 	
 	public Appointment viewAppointment(int appointmentId) {
-		Optional<Appointment> optional = appointment.findAppointmentById(appointmentId);
+		Optional<Appointment> optional = appointment.findById(appointmentId);
 		Appointment appo=optional.orElseThrow(()->new ApointmentNotFoundException("Appointment Not Exists"));
 		return appo;
 	}
@@ -61,10 +69,9 @@ public class IAppointmentRepository {
 		return appointment1;
 	}
 	
-	//not complete
-	public List<Appointment> getAppointmentList(int centreId, String test, int status) {
-		
-		return null;
+	public List<Appointment> getAppointmentList(Date appointmentDate,String approvalStatus) {
+		Optional<List<Appointment>> optional=appointment.findAppointmentByStatus(appointmentDate,approvalStatus);	
+		return optional.get();
 	}
 	
 	public Appointment removeAppointment(Appointment appo) {

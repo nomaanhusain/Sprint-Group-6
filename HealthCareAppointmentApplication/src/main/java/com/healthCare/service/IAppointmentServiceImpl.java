@@ -1,8 +1,7 @@
 package com.healthCare.service;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +20,7 @@ public class IAppointmentServiceImpl implements IAppointmentService {
 		return appointment1;	
 	}
 
-	public Set<Appointment> viewAppointments(String patientName) {
+	public List<Appointment> viewAppointments(String patientName) {
 		return arepository.viewAppointments(patientName);
 	}
 
@@ -36,8 +35,8 @@ public class IAppointmentServiceImpl implements IAppointmentService {
 	}
 
 	@Override
-	public List<Appointment> getAppointmentList(int centreId, String test, int status) {
-		return arepository.getAppointmentList(centreId, test, status);
+	public List<Appointment> getAppointmentList(Date appointmentDate,String approvalStatus) {
+		return arepository.getAppointmentList(appointmentDate,approvalStatus);
 	}
 
 	@Override
