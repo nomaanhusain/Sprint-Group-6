@@ -17,8 +17,9 @@ public class IUserRepository {
 	@Autowired
 	private UserRepository usersRepo;
 
-	public Users validateUsers(String Usersname, String password) {
+	public Users validateUsers(String Usersname, String password) throws Exception {
 		StringEncrypter encrypt = new StringEncrypter();
+		System.out.println("______Seee HERER______"+encrypt.decrypt("Umzqbfwn786*"));
 		List<Users> list = usersRepo.findAll();
 		for (Users u : list) {
 			if (u.getUsername().equals(Usersname)) {
@@ -33,7 +34,7 @@ public class IUserRepository {
 		return null;
 	}
 
-	public Users addUsers(Users user) {
+	public Users addUsers(Users user) throws Exception {
 		StringEncrypter encrypt = new StringEncrypter();
 		String encPass = encrypt.encrypt(user.getPassword());
 		user.setPassword(encPass);
@@ -57,7 +58,7 @@ public class IUserRepository {
 		usersRepo.deleteById(userId);
 		return true;
 	}
-	public Users removeUsers(Users users) {
+	public Users removeUsers(Users users) throws Exception {
 		StringEncrypter encrypt = new StringEncrypter();
 		users.setPassword(encrypt.encrypt(users.getPassword()));
 		Optional<Users> u = usersRepo.findByUsername(users.getUsername());

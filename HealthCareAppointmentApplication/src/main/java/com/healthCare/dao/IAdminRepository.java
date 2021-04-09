@@ -10,7 +10,7 @@ import com.healthCare.security.StringEncrypter;
 public class IAdminRepository {
 	@Autowired
 	private IUserRepository userRep;
-	public void registerAdmin(String username, String password) {
+	public void registerAdmin(String username, String password) throws Exception {
 		Users user=new Users();
 		user.setUsername(username);
 		user.setPassword(password);

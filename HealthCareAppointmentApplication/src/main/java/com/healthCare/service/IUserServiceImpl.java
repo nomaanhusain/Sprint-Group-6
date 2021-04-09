@@ -27,7 +27,7 @@ public class IUserServiceImpl implements IUserService {
 			fileAppender = new FileAppender(patternLayout, "mylogs.log");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		log.addAppender(fileAppender);
 	}
@@ -40,7 +40,13 @@ public class IUserServiceImpl implements IUserService {
 	@Override
 	public Users validateUser(String username, String password) {
 
-		Users user = userRep.validateUsers(username, password);
+		Users user=null;
+		try {
+			user = userRep.validateUsers(username, password);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 		if (user == null) {
 			log.error("User Not Found");
 			throw new UsernameNotFoundException("User Not Found");
@@ -51,14 +57,25 @@ public class IUserServiceImpl implements IUserService {
 	//Add a new user
 	@Override
 	public Users addUser(Users user) {
-		Users u = userRep.addUsers(user);
+		Users u =null;
+		try {
+			u = userRep.addUsers(user);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 		log.info("User Added");
 		return u;
 	}
 	//Remove a User
 	@Override
 	public Users removeUser(Users user) {
-		Users u = userRep.removeUsers(user);
+		try {
+			Users u = userRep.removeUsers(user);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 		log.info("User Removed");
 		return user;
 	}

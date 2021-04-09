@@ -11,6 +11,11 @@ public class IAdminServiceImpl implements IAdminService {
 	@Autowired
 	private IAdminRepository adminRep;
 	public void registerAdmin(String username, String password) {
-		adminRep.registerAdmin(username, password);
+		try {
+			adminRep.registerAdmin(username, password);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 	}
 }

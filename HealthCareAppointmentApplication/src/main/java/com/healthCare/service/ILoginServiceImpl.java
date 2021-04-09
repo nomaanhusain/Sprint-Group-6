@@ -29,7 +29,7 @@ public class ILoginServiceImpl implements ILoginService {
 			fileAppender = new FileAppender(patternLayout, "mylogs.log");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		log.addAppender(fileAppender);
 	}
@@ -40,8 +40,15 @@ public class ILoginServiceImpl implements ILoginService {
 	private IUserRepository loginRepository;
 
 	@Override
-	public Users login(Users user) {
-		Users username = loginRepository.validateUsers(user.getUsername(), user.getPassword());
+	public Users login(Users user){
+		
+		Users username=null;
+		try {
+			username = loginRepository.validateUsers(user.getUsername(), user.getPassword());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 
 		if (username == null) {
 			log.error("Invalid Username or Passowrd");
@@ -56,7 +63,13 @@ public class ILoginServiceImpl implements ILoginService {
 	@Override
 	public Users logout(Users user) {
 		// TODO Auto-generated method stub
-		Users username = loginRepository.validateUsers(user.getUsername(), user.getPassword());
+		Users username=null;
+		try {
+			username = loginRepository.validateUsers(user.getUsername(), user.getPassword());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 
 		if (username == null) {
 			log.error("Invalid Username or Passowrd");
