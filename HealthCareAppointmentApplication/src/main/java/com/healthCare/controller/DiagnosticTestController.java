@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/hcdtc")
 @Api(value = "Dianostic Test", tags = { "Diagnostic Test" }, description = "Controller for Diagnostic Test")
+@CrossOrigin
 public class DiagnosticTestController {
 	@Autowired
 	private IDiagnosticTestService digServices;
