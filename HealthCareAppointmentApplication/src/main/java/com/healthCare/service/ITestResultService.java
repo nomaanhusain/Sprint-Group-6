@@ -1,5 +1,6 @@
 package com.healthCare.service;
 
+import java.util.List;
 import java.util.Set;
 
 import com.healthCare.model.Patient;
@@ -13,4 +14,6 @@ public interface ITestResultService {
 	public TestResult removeTestResult(int id);
 
 	public Set<TestResult> viewResultsByPatient(Patient patient);
+	
+	public List<TestResult> getAllTestResult();
 }

@@ -1,6 +1,7 @@
 package com.healthCare.service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.FileAppender;
@@ -49,6 +50,13 @@ public class ITestResultServiceImpl implements ITestResultService {
 	public Set<TestResult> viewResultsByPatient(Patient patient) {
 		Set<TestResult> set = testRep.viewResultsByPatient(patient);
 		return set;
+	}
+
+	@Override
+	public List<TestResult> getAllTestResult() {
+		// TODO Auto-generated method stub
+		List<TestResult> list = testRep.getAllTestResult();
+		return list;
 	}
 
 }

@@ -2,6 +2,7 @@ package com.healthCare.dao;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -48,6 +49,11 @@ public class ITestResultRepository {
 		TestResult t = testResultDao.save(tr);
 		log.info("Test Result Added");
 		return t;
+	}
+	
+	public List<TestResult> getAllTestResult(){
+		List<TestResult> list = testResultDao.findAll();
+		return list;
 	}
 
 	public TestResult removeTestResult(int id) {

@@ -1,5 +1,6 @@
 package com.healthCare.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +58,12 @@ public class TestResultController {
 	public ResponseEntity<Set<TestResult>> viewResultByPatient(@RequestBody Patient patient) {
 		Set<TestResult> set = testResultService.viewResultsByPatient(patient);
 		return new ResponseEntity<Set<TestResult>>(set, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getalltestresult")
+	@ApiOperation(value = "View all results", response = TestResult.class)
+	public ResponseEntity<List<TestResult>> viewAllResult() {
+		List<TestResult> list = testResultService.getAllTestResult();
+		return new ResponseEntity<List<TestResult>>(list, HttpStatus.OK);
 	}
 }
