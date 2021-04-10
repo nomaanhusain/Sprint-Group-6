@@ -88,4 +88,9 @@ public class IDiagnosticTestRepository {
 		log.info("Test removed from Diagnostic Center");
 		return test;
 	}
+	public String removeDiagnosticTest(int testId) {
+		digTestDao.deleteById(testId);
+		return "Deleted Succesfully";
+		
+	}
 }

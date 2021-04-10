@@ -69,5 +69,10 @@ public class DiagnosticTestController {
 		DiagnosticTest dig = digServices.removeTestFromDiagnosticCenter(centerId, test);
 		return new ResponseEntity<DiagnosticTest>(dig, HttpStatus.OK);
 	}
-
+	@DeleteMapping("/RemoveTest/{testId}")
+	@ApiOperation(value = "Remove a Test")
+	public ResponseEntity<String> removeDiagnosticTest(@PathVariable int testId) {
+		String dig = digServices.removeDiagnosticTest(testId);
+		return new ResponseEntity<String>(dig, HttpStatus.OK);
+	}
 }

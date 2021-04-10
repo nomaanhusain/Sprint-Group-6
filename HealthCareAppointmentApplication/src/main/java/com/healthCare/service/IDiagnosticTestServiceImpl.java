@@ -46,4 +46,12 @@ public class IDiagnosticTestServiceImpl implements IDiagnosticTestService {
 		DiagnosticTest dig = diagnosticRep.updateTestDetail(test);
 		return dig;
 	}
+
+	@Override
+	public String removeDiagnosticTest(int testId) {
+		// TODO Auto-generated method stub
+		String str=diagnosticRep.removeDiagnosticTest(testId);
+		return str;
+	}
+
 }
