@@ -1,7 +1,6 @@
 package com.healthCare.controller;
-
 import java.util.List;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/hcdcc")  //hcdcc:heatlh care diagnostic center controller
 
@@ -33,7 +32,7 @@ public class DiagnosticCenterController {
 	private IDiagnosticCenter icenter;
 
 	// to get list of all Diagnostic Center
-	@GetMapping("/Centers")
+	@GetMapping("/centers")
 	@ApiOperation(value = "List all the Centers available", response = DiagnosticCenter.class)
 	public List<DiagnosticCenter> getAllDiagnosticCenters(){
 		List<DiagnosticCenter> list= icenter.getAllDiagnosticCenters();
@@ -41,7 +40,7 @@ public class DiagnosticCenterController {
 	}
 
 	//to add Diagnostic Center
-	@PostMapping("/Centers")
+	@PostMapping("/centers")
 	@ApiOperation(value = "Add Diagnostic Center", response = DiagnosticCenter.class)
 	public ResponseEntity<DiagnosticCenter> addDiagnosticCenter(@RequestBody DiagnosticCenter diagnosticCenter) {
 		DiagnosticCenter center = icenter.addDiagnosticCenter(diagnosticCenter);
@@ -50,7 +49,7 @@ public class DiagnosticCenterController {
 	}
 
 	//to get Diagnostic Center of particular Id.
-	@GetMapping("/Centers/{diagnosticCenterId}")
+	@GetMapping("/centers/{diagnosticCenterId}")
 	@ApiOperation(value = "Center of particular CenterId", response = DiagnosticCenter.class)
 	public ResponseEntity<DiagnosticCenter> getDiagnosticCenterById(@PathVariable int diagnosticCenterId)
 	{
@@ -59,7 +58,7 @@ public class DiagnosticCenterController {
 	}
 
 	//to update Diagnostic Center
-	@PutMapping("/UpdateCenters")
+	@PutMapping("/centers")
 	@ApiOperation(value = "Update Center", response = DiagnosticCenter.class)
 	public ResponseEntity<DiagnosticCenter> updateDiagnosticCenter(@RequestBody DiagnosticCenter diagnosticcenter) {
 		DiagnosticCenter updateCenter = icenter.updateDiagnosticCenter(diagnosticcenter);
@@ -67,7 +66,7 @@ public class DiagnosticCenterController {
 	}
 
 	//to view test Details
-	@GetMapping("/viewTest/{diagnosticCenterId}")
+	@GetMapping("/viewtest/{diagnosticCenterId}")
 	@ApiOperation(value = "View details of a test from a center", response = DiagnosticCenter.class)//check response
 	public ResponseEntity<DiagnosticTest>viewTestDetails (@PathVariable int diagnosticCenterId,@RequestBody String testName){
 		DiagnosticTest viewTest=icenter.viewTestDetails(diagnosticCenterId, testName);
@@ -75,7 +74,7 @@ public class DiagnosticCenterController {
 	}
 
 	//to add test 
-	@PostMapping("/addTest/{diagnosticCenterId}")
+	@PostMapping("/addtest/{diagnosticCenterId}")
 	public ResponseEntity<String>addTest (@PathVariable int diagnosticCenterId,@RequestBody int testId){
 		icenter.addTest(diagnosticCenterId,testId);
 		return new ResponseEntity<String>("Test With ID :" + testId + " added Successfully", HttpStatus.CREATED);
@@ -83,19 +82,21 @@ public class DiagnosticCenterController {
 	}
 
 	//to get Diagnostic Center by name
-	@GetMapping("/Centername/{centername}")
-
+	@GetMapping("getcentername/{centername}")
 	public ResponseEntity<DiagnosticCenter> getDiagnosticCenter(@PathVariable String centername){
 		DiagnosticCenter centerName=icenter.getDiagnosticCenter(centername);
 		return new ResponseEntity<DiagnosticCenter>(centerName,HttpStatus.OK);
 	}
 
 	//to delete Diagnostic Center of particular id
-	@DeleteMapping(value =  "/removeCenter/{id}")
+	@DeleteMapping(value =  "/centers/{centerId}")
 	@ApiOperation(value = "Remove a center", response = DiagnosticCenter.class)
-	public ResponseEntity<String> removeDiagnosticCenter(@PathVariable Integer id){
-		icenter.removeDiagnosticCenter(id);
-		return new ResponseEntity<String>("Diagnostic Center With ID :" + id + " Deleted Successfully", HttpStatus.OK);
+	public ResponseEntity<String> removeDiagnosticCenter(@PathVariable Integer centerId){
+		icenter.removeDiagnosticCenter(centerId);
+		return new ResponseEntity<String>("Diagnostic Center With ID :" + centerId + " Deleted Successfully", HttpStatus.OK);
 	}
 
+	
+	
+	
 }
