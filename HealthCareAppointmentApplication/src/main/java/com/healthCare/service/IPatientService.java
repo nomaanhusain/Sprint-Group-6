@@ -10,5 +10,4 @@ public interface IPatientService {
 	
 	public Patient viewPatient(String patientName);
 	
-	
 }

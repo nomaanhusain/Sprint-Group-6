@@ -52,7 +52,7 @@ public class IAppointmentRepository {
 		while(it.hasNext())
 		{
 			List<Appointment> a=appointment.findAppointmentByPid(it.next()).get();
-			app.add(a.get(1));	
+			app.add(a.get(0));	
 		}
 		return app;
 	}

@@ -35,7 +35,7 @@ public class Appointment {
 	@Column(name="appointment_id")
 	private int appointmentId;
 	
-	@JsonFormat(pattern = "dd-MM-yyyy")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@ApiModelProperty(notes = "Appointment Date")
 	@NotEmpty(message = "Please provide avilable date")
 	private Date appointmentDate;
